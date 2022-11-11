@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meditours", "Meditours.csproj", "{96D5BC92-5D10-43DB-8D03-A7E95ED521CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96D5BC92-5D10-43DB-8D03-A7E95ED521CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D5BC92-5D10-43DB-8D03-A7E95ED521CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D5BC92-5D10-43DB-8D03-A7E95ED521CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D5BC92-5D10-43DB-8D03-A7E95ED521CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {335430A9-9AB4-4186-8A2A-6BD6229F4D29}
+	EndGlobalSection
+EndGlobal
