@@ -1,0 +1,302 @@
+﻿@model Meditours.Models.usuario
+@{
+	ViewData["Title"] = "Login";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" 
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Meditours - Login</title>
+</head>
+<header>
+        <div class="clear"></div>
+        <nav>
+            <!-- <div class="site-title">Finland</div> -->
+            <!-- <h2>MEDITOURS</h2> -->
+            <ul>
+                <li> <button type="button" class="btn btn-light" id="carrito"> <img src=carritonegro.png height="24px" weight="24px"> Mi carrito</button> </li>
+                <li> <button type="button" class="btn btn-light"> <img src=bag.png height="24px" weight="24px">Paquetes</a></li>
+                <li><button type="button" class="btn btn-light"> <img src=telefono.png height="24px" weight="24px">Contacto</a></li>
+                <li><a asp-controller="Home" asp-action="Index" ><button type="button" class="btn btn-light"> <img src=icon.png height="24px" weight="24px"> Volver</a></li>
+            <ul>
+        </nav>
+    </header>
+
+<body>
+    
+    <div id="contenedor">
+        <div id="central">
+            <div id="login">
+                <div class="titulo">
+                    Bienvenido
+                    <h4>Aqui inician tus vacaciones</h4>
+                </div>
+
+                <form asp-action="LogearUsuario" method="post" id="loginform">
+                    <input asp-for="Nombre" type="text" name="usuario" placeholder="Usuario" required>
+                    
+                    <input asp-for="password" type="password" placeholder="Contraseña" name="password" required>
+                    
+                    <button type="submit" title="Ingresar" name="Ingresar">Login</button>
+                </form>
+                <div class="pie-form">
+                    <a href="#">¿Perdiste tu contraseña?</a>
+                    <a asp-controller="Home" asp-action="Registrar">¿No tienes Cuenta? Registrate</a>
+                </div>
+            </div>
+            <div class="inferior">
+                <a asp-controller="Home" asp-action="Index">Volver</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+                    <style>
+
+display-2 h2{
+  font-family: cursive;
+
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+}
+
+nav {
+    width: 100%;
+    height: 60px;
+    background: #7FBCD2;
+    position: sticky;
+    z-index: 999px;
+}
+
+nav div {
+    color: white;
+    font-size: 2rem;
+    line-height: 60px;
+    position: absolute;
+    top: 0;
+    left: 2%;
+    visibility: hidden;
+}
+.visible-title {
+    visibility: visible;
+}
+
+nav ul { 
+    list-style-type: none;
+    margin: 0 2% auto 0;
+    padding-left: 0;
+    text-align: right;
+    max-width: 100%;
+}
+
+nav ul li { 
+    display: inline-block; 
+    line-height: 60px;
+    margin-left: 10px;
+    font-size: 17px;
+}
+
+nav ul li a {
+    text-decoration: none; 
+    color: #ffffff;
+}
+
+button.btn{
+	background-color: #A5F1E9;
+  font-size: 4px;
+  padding: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color:#26272b;
+  text-shadow: #ffffff;
+  border-style: none;
+  font-size: large;
+  
+}
+
+button.btn.btn-light{
+	background-color: #A5F1E9;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+button.btn.btn-light :hover{
+  text-shadow: #ffffff;
+}
+
+container #login-cuadro{
+    align-content: center;
+}
+
+
+body:before {
+  filter: blur(2px);
+  content: "";
+  position: absolute;
+  height: 23%; 
+  width: 20%;
+  background: url(https://c4.wallpaperflare.com/wallpaper/683/586/482/cielo-mar-naturaleza-nube-wallpaper-preview.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+  -webkit-transform: scale(5);
+  -webkit-transform-origin: top left;
+}
+
+.container{
+  z-index:99999;
+}
+
+
+body{
+    font-family: 'Overpass', sans-serif;
+    font-weight: normal;
+    font-size: 100%;
+    color: #1b262c;
+    
+    margin: auto;
+    background-color: #ffffff;
+}
+
+#contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0;
+    padding: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+#central {
+    max-width: 320px;
+    width: 100%;
+}
+
+.titulo {
+    font-size: 250%;
+    font-weight: bolder;
+    color:#037569;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#login {
+    width: 100%;
+    padding: 50px 30px;
+    background-color: #e7e7e7;
+    
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    
+    box-sizing: border-box;
+}
+
+#login input {
+    font-family: 'Overpass', sans-serif;
+    font-size: 110%;
+    color: #1b262c;
+    
+    display: block;
+    width: 100%;
+    height: 40px;
+    
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 10px;
+    
+    box-sizing: border-box;
+    
+    border: none;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+#login input{
+    background-color: #ffffff;
+}
+
+#login input::placeholder {
+    font-family: 'Overpass', sans-serif;
+    color: #037569;
+}
+
+#login button {
+    font-family: 'Overpass', sans-serif;
+    font-size: 160%;
+    color:#ffffff;
+    font-weight: bolder;
+    width: 100%;
+    height: 40px;
+    border: none;
+    
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    
+    background-color: #64d8ed;
+    
+    margin-top: 10px;
+}
+
+#login button:hover {
+    background-color: #0f4c75;
+    color:#bbe1fa;
+}
+
+.pie-form {
+    font-size: 90%;
+    text-align: center;    
+    margin-top: 15px;
+}
+
+.pie-form a {
+    display: block;
+    text-decoration: none;
+    color: #037569;
+    margin-bottom: 3px;
+}
+
+.pie-form a:hover {
+    color: #0f4c75;
+}
+
+.inferior {
+    margin-top: 10px;
+    font-size: 90%;
+    text-align: center;
+}
+
+.inferior a {
+    display: block;
+    text-decoration: none;
+    color: #bbe1fa;
+    margin-bottom: 3px;
+}
+
+.inferior a:hover {
+    color: #3282b8;
+}
+
+
+
+</style>
