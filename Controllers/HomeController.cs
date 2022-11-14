@@ -22,6 +22,13 @@ namespace Meditours.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> Users()
+        {
+            var response = await _context.usuario.Include(z => z.Roles).ToListAsync();
+
+            return View(response);
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -57,16 +64,35 @@ namespace Meditours.Controllers
                     usuario.password = request.password;
                     usuario.FkRol = 1;
 
-                    _context.usuarios.Add(usuario);
+                    _context.usuario.Add(usuario);
                     await _context.SaveChangesAsync();
 
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Login));
                 }
                 return View();
             }
             catch (Exception ex)
             {
                 throw new Exception("Errors papu " + ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Editar(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var usuario = _context.usuario.Find(id);
+                if (usuario == null)
+                {
+                    return NotFound();
+                }
+                else
+                    return View(usuario);
             }
         }
 

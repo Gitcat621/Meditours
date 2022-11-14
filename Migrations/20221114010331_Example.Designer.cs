@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Meditours.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221111170117_Example")]
+    [Migration("20221114010331_Example")]
     partial class Example
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,7 +158,7 @@ namespace Meditours.Migrations
 
                     b.HasIndex("FkRol");
 
-                    b.ToTable("usuarios");
+                    b.ToTable("usuario");
                 });
 
             modelBuilder.Entity("Meditours.Models.Carrito", b =>

@@ -156,7 +156,7 @@ namespace Meditours.Migrations
 
                     b.HasIndex("FkRol");
 
-                    b.ToTable("usuarios");
+                    b.ToTable("usuario");
                 });
 
             modelBuilder.Entity("Meditours.Models.Carrito", b =>

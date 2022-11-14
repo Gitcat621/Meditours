@@ -63,7 +63,7 @@ namespace Meditours.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "usuarios",
+                name: "usuario",
                 columns: table => new
                 {
                     PkUsuario = table.Column<int>(type: "int", nullable: false)
@@ -75,9 +75,9 @@ namespace Meditours.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_usuarios", x => x.PkUsuario);
+                    table.PrimaryKey("PK_usuario", x => x.PkUsuario);
                     table.ForeignKey(
-                        name: "FK_usuarios_Roles_FkRol",
+                        name: "FK_usuario_Roles_FkRol",
                         column: x => x.FkRol,
                         principalTable: "Roles",
                         principalColumn: "PkRol",
@@ -115,9 +115,9 @@ namespace Meditours.Migrations
                         principalColumn: "PkMetodo",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Carrito_usuarios_FkUsuario",
+                        name: "FK_Carrito_usuario_FkUsuario",
                         column: x => x.FkUsuario,
-                        principalTable: "usuarios",
+                        principalTable: "usuario",
                         principalColumn: "PkUsuario",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -138,8 +138,8 @@ namespace Meditours.Migrations
                 column: "metodo_PagoPkMetodo");
 
             migrationBuilder.CreateIndex(
-                name: "IX_usuarios_FkRol",
-                table: "usuarios",
+                name: "IX_usuario_FkRol",
+                table: "usuario",
                 column: "FkRol");
         }
 
@@ -158,7 +158,7 @@ namespace Meditours.Migrations
                 name: "Metodo_pago");
 
             migrationBuilder.DropTable(
-                name: "usuarios");
+                name: "usuario");
 
             migrationBuilder.DropTable(
                 name: "Roles");
