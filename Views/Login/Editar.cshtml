@@ -1,6 +1,7 @@
-﻿@model Meditours.Models.usuario
+﻿@model Meditours.Models.Usuarios
 @{
-	ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Editar";
+     Layout = "_DashboardLayout";
 }
 
 <div class="container-fluid">
@@ -11,7 +12,7 @@
 			</div>
 
 			<div class="card-body">
-				<form asp-action="CrearUsuario" method="post">
+				<form asp-action="EditarUsuario" method="post">
 
 					<input type="hidden" asp-for="PkUsuario"/>
 					<div class="form-group">
@@ -27,6 +28,11 @@
 					<div class="form-group">
 						<label asp-for="password" class="Control-label"></label>
 						<input asp-for="password" class="form-control" placeholder="Ingresa password" required/>
+					</div>
+
+					<div class="form-group mt-3">
+						<label asp-for="FkRol" class="Control-label"></label>
+						<select asp-for="FkRol" asp-items="ViewBag.combo" class="select2-placeholder-multiple form-control"> <option value="">--selecciona--</option></select>
 					</div>
 
 					<div class="form-group mt-3">

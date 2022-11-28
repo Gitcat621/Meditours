@@ -1,58 +1,98 @@
-﻿@model Meditours.Models.usuario
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
-	ViewData["Title"] = "Regsitrar";
+    Layout = "_Layout";
 }
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" 
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Meditours - Login</title>
 </head>
-<header>
-        <div class="clear"></div>
-        <nav>
-            <!-- <div class="site-title">Finland</div> -->
-            <!-- <h2>MEDITOURS</h2> -->
-            <ul>
-                <li> <button type="button" class="btn btn-light" id="carrito"> <img src=carritonegro.png height="24px" weight="24px"> Mi carrito</button> </li>
-                <li> <button type="button" class="btn btn-light"> <img src=bag.png height="24px" weight="24px">Paquetes</a></li>
-                <li><button type="button" class="btn btn-light"> <img src=telefono.png height="24px" weight="24px">Contacto</a></li>
-                <li><a asp-controller="Home" asp-action="Index" ><button type="button" class="btn btn-light"> <img src=icon.png height="24px" weight="24px"> Volver</a></li>
-            <ul>
-        </nav>
-    </header>
-
 <body>
     
     <div id="contenedor">
         <div id="central">
             <div id="login">
                 <div class="titulo">
-                    REGISTRO
-                    <h4>Ingresa tus datos</h4>
+                    Bienvenido
+                    <h4>Aqui inician tus vacaciones</h4>
                 </div>
 
-                <form asp-action="CrearUsuario" method="post" id="loginform">
-                    <input asp-for="Nombre" type="text" name="Nombre" placeholder="Nombre" required>
-
-                    <input asp-for="User" type="text" name="User" placeholder="Usuario" required>
+                <div id="loginform">
+                    <input type="text" id="user" placeholder="Usuario" required>
                     
-                    <input asp-for="password" type="password"  name="password" placeholder="Contraseña" required>
+                    <input type="password" placeholder="Contraseña" id="Password" required>
                     
-                    <button type="submit" title="Ingresar" name="Ingresar">Crear cuenta</button>
-                </form>
+                    <button id="Btn_login" >Login</button>
+                </div>
+                <div class="pie-form">
+                    <a href="#">¿Perdiste tu contraseña?</a>
+                    <a asp-action="Registrar" asp-controller="Login">¿No tienes Cuenta? Registrate</a>
+                </div>
             </div>
             <div class="inferior">
-                <a asp-controller="Home" asp-action="Index">Volver</a>
+                <a asp-action="Index" asp-controller="Home">Volver</a>
             </div>
         </div>
     </div>
 
 </body>
 
-                    <style>
+</style>
+
+<script>  
+     $(document).ready(function() {
+         $("#Btn_login").click(function () {
+
+            var user = $("#user").val();
+            var password = $("#Password").val();
+            var data = {
+                "user" : user,
+                "password" : password
+            }
+            $.ajax({
+                url: "/Login/LoginUser",
+                type: "POST",
+                data: {
+                    "user": user,
+                    "Password": password
+                },
+                dataType: "json",
+
+                 success: function (response) {
+                    console.log(response)
+                    if (response.success == true) {
+                        debugger
+                        console.log(response)
+                        if(response.admin == true){
+                        window.location.href = "/Home/IndexAdmin";
+                        }
+                        else{
+                            window.location.href = "/Home/Index";
+                        }
+
+                    }
+                    else {
+                        $()
+                        window.location.href = "@Url.Action("Index","Login")";
+                    }
+                },
+                error: function () {
+                    console.log('Login Fail!!');
+                }
+            })
+        });
+    });
+ </script>
+
+<style>
 
 display-2 h2{
   font-family: cursive;
@@ -291,7 +331,3 @@ body{
 .inferior a:hover {
     color: #3282b8;
 }
-
-
-
-</style>

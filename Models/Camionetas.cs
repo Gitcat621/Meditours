@@ -2,12 +2,12 @@
 
 namespace Meditours.Models
 {
-    public class Camioneta
+    public class Camionetas
     {
         [Key]
         public int PkCamioneta { get; set; }
         public string Modelo { get; set; }
-        public int Precio { get; set; }
-        public int CantidadMax { get; set; }
+        public int Capacidad { get; set; }
+        public string Urlimg { get; set; }
     }
 }

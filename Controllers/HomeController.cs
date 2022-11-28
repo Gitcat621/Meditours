@@ -22,78 +22,31 @@ namespace Meditours.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Users()
+        public async Task<IActionResult> Index()
         {
-            var response = await _context.usuario.Include(z => z.Roles).ToListAsync();
+            var response = await _context.Destinos.ToListAsync();
+
+            ViewData["Holbox"] = await _context.Destinos.Where(x => x.PkDestino == 1).FirstOrDefaultAsync();
+            ViewData["Isla"] = await _context.Destinos.Where(x => x.PkDestino == 2).FirstOrDefaultAsync();
+            ViewData["Cozumel"] = await _context.Destinos.Where(x => x.PkDestino == 3).FirstOrDefaultAsync();
+            ViewData["Coloradas"] = await _context.Destinos.Where(x => x.PkDestino == 4).FirstOrDefaultAsync();
+            ViewData["Yucatan"] = await _context.Destinos.Where(x => x.PkDestino == 5).FirstOrDefaultAsync();
+            ViewData["Chichen"] = await _context.Destinos.Where(x => x.PkDestino == 6).FirstOrDefaultAsync();
+            ViewData["Xcaret"] = await _context.Destinos.Where(x => x.PkDestino == 7).FirstOrDefaultAsync();
+            ViewData["Puerto"] = await _context.Destinos.Where(x => x.PkDestino == 8).FirstOrDefaultAsync();
 
             return View(response);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAdmin()
         {
-            return View();
+            var response = await _context.Destinos.ToListAsync();
+            ViewData["User"] = await _context.Usuarios.Where(x => x.PkUsuario == 4).FirstOrDefaultAsync();
+            return View(response);
         }
-
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Registrar()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CrearUsuario(usuario request)
-        {
-            try
-            {
-                if (request != null)
-                {
-                    usuario usuario = new usuario();
-                    usuario.Nombre = request.Nombre;
-                    usuario.User = request.User;
-                    usuario.password = request.password;
-                    usuario.FkRol = 1;
-
-                    _context.usuario.Add(usuario);
-                    await _context.SaveChangesAsync();
-
-                    return RedirectToAction(nameof(Login));
-                }
-                return View();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Errors papu " + ex.Message);
-            }
-        }
-
-        [HttpGet]
-        public IActionResult Editar(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                var usuario = _context.usuario.Find(id);
-                if (usuario == null)
-                {
-                    return NotFound();
-                }
-                else
-                    return View(usuario);
-            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

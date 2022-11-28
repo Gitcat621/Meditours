@@ -1,7 +1,10 @@
-﻿@model Meditours.Models.usuario
+﻿@model Meditours.Models.Usuarios
 @{
-	ViewData["Title"] = "Login";
+    ViewData["Title"] = "Registrar";
+     Layout = "_DashboardLayout";
 }
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +16,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Meditours - Login</title>
 </head>
-<header>
-        <div class="clear"></div>
-        <nav>
-            <!-- <div class="site-title">Finland</div> -->
-            <!-- <h2>MEDITOURS</h2> -->
-            <ul>
-                <li> <button type="button" class="btn btn-light" id="carrito"> <img src=carritonegro.png height="24px" weight="24px"> Mi carrito</button> </li>
-                <li> <button type="button" class="btn btn-light"> <img src=bag.png height="24px" weight="24px">Paquetes</a></li>
-                <li><button type="button" class="btn btn-light"> <img src=telefono.png height="24px" weight="24px">Contacto</a></li>
-                <li><a asp-controller="Home" asp-action="Users" ><button type="button" class="btn btn-light"> <img src=icon.png height="24px" weight="24px"> Users</a></li>
-            <ul>
-        </nav>
-    </header>
-
 <body>
     
     <div id="contenedor">
@@ -37,20 +26,19 @@
                     <h4>Aqui inician tus vacaciones</h4>
                 </div>
 
-                <form asp-action="LogearUsuario" method="post" id="loginform">
-                    <input asp-for="Nombre" type="text" name="usuario" placeholder="Usuario" required>
+                <form asp-action="RegistrarUsuario" method="post" id="loginform">
                     
-                    <input asp-for="password" type="password" placeholder="Contraseña" name="password" required>
+                    <input asp-for="Nombre" type="text" placeholder="Nombre" required>
+
+                    <input asp-for="User" type="text" placeholder="Usuario" required>
                     
-                    <button type="submit" title="Ingresar" name="Ingresar">Login</button>
+                    <input asp-for="password" type="password" placeholder="Contraseña" required>
+                    
+                    <button type="submit">Registrar</button>
                 </form>
-                <div class="pie-form">
-                    <a href="#">¿Perdiste tu contraseña?</a>
-                    <a asp-controller="Home" asp-action="Registrar">¿No tienes Cuenta? Registrate</a>
-                </div>
             </div>
             <div class="inferior">
-                <a asp-controller="Home" asp-action="Index">Volver</a>
+                <a href="#">Volver</a>
             </div>
         </div>
     </div>

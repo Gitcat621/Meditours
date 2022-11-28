@@ -6,11 +6,12 @@ namespace Meditours.Context
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public DbSet<usuario> usuario { get; set; }
+
+        public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Roles> Roles { get; set; }
-        public DbSet<Carrito> Carrito { get; set; }
-        public DbSet<Metodo_pago> Metodo_pago { get; set; }
-        public DbSet<Camioneta> Camioneta { get; set; }
-        public DbSet<itinerario> itinerario { get; set; }
+        public DbSet<Camionetas> Camionetas { get; set; }
+        public DbSet<Destinos> Destinos { get; set; }
+        public DbSet<Reservas> Reservas { get; set; }
+        public DbSet<Itinerarios> Itinerarios { get; set; }
     }
 }

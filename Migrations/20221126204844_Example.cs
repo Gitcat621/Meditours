@@ -7,46 +7,34 @@ namespace Meditours.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Camioneta",
+                name: "Camionetas",
                 columns: table => new
                 {
                     PkCamioneta = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Capacidad = table.Column<int>(type: "int", nullable: false),
+                    Urlimg = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Camionetas", x => x.PkCamioneta);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Destinos",
+                columns: table => new
+                {
+                    PkDestino = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Precio = table.Column<int>(type: "int", nullable: false),
-                    CantidadMax = table.Column<int>(type: "int", nullable: false)
+                    Urlimg = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Camioneta", x => x.PkCamioneta);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "itinerario",
-                columns: table => new
-                {
-                    PkItinerario = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    lugar = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    tiempo = table.Column<int>(type: "int", nullable: false),
-                    precio = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_itinerario", x => x.PkItinerario);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Metodo_pago",
-                columns: table => new
-                {
-                    PkMetodo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Metodo_pago", x => x.PkMetodo);
+                    table.PrimaryKey("PK_Destinos", x => x.PkDestino);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,7 +51,29 @@ namespace Meditours.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "usuario",
+                name: "Itinerarios",
+                columns: table => new
+                {
+                    PkItinerario = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HraSalida = table.Column<int>(type: "int", nullable: false),
+                    Capacidad = table.Column<int>(type: "int", nullable: false),
+                    Precio = table.Column<int>(type: "int", nullable: false),
+                    FkCamioneta = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Itinerarios", x => x.PkItinerario);
+                    table.ForeignKey(
+                        name: "FK_Itinerarios_Camionetas_FkCamioneta",
+                        column: x => x.FkCamioneta,
+                        principalTable: "Camionetas",
+                        principalColumn: "PkCamioneta",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
                 columns: table => new
                 {
                     PkUsuario = table.Column<int>(type: "int", nullable: false)
@@ -75,9 +85,9 @@ namespace Meditours.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_usuario", x => x.PkUsuario);
+                    table.PrimaryKey("PK_Usuarios", x => x.PkUsuario);
                     table.ForeignKey(
-                        name: "FK_usuario_Roles_FkRol",
+                        name: "FK_Usuarios_Roles_FkRol",
                         column: x => x.FkRol,
                         principalTable: "Roles",
                         principalColumn: "PkRol",
@@ -85,80 +95,82 @@ namespace Meditours.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Carrito",
+                name: "Reservas",
                 columns: table => new
                 {
-                    PkCarrito = table.Column<int>(type: "int", nullable: false)
+                    PkReserva = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Cliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HraSalida = table.Column<int>(type: "int", nullable: false),
                     FkUsuario = table.Column<int>(type: "int", nullable: false),
+                    FkDestino = table.Column<int>(type: "int", nullable: false),
                     FkCamioneta = table.Column<int>(type: "int", nullable: false),
-                    ModeloCamioneta = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FkMetodo_pago = table.Column<int>(type: "int", nullable: false),
-                    metodo_PagoPkMetodo = table.Column<int>(type: "int", nullable: true),
-                    Metodo_pago = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Precio_Final = table.Column<int>(type: "int", nullable: false)
+                    Dia = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Carrito", x => x.PkCarrito);
+                    table.PrimaryKey("PK_Reservas", x => x.PkReserva);
                     table.ForeignKey(
-                        name: "FK_Carrito_Camioneta_FkCamioneta",
+                        name: "FK_Reservas_Camionetas_FkCamioneta",
                         column: x => x.FkCamioneta,
-                        principalTable: "Camioneta",
+                        principalTable: "Camionetas",
                         principalColumn: "PkCamioneta",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Carrito_Metodo_pago_metodo_PagoPkMetodo",
-                        column: x => x.metodo_PagoPkMetodo,
-                        principalTable: "Metodo_pago",
-                        principalColumn: "PkMetodo",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_Reservas_Destinos_FkDestino",
+                        column: x => x.FkDestino,
+                        principalTable: "Destinos",
+                        principalColumn: "PkDestino",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Carrito_usuario_FkUsuario",
+                        name: "FK_Reservas_Usuarios_FkUsuario",
                         column: x => x.FkUsuario,
-                        principalTable: "usuario",
+                        principalTable: "Usuarios",
                         principalColumn: "PkUsuario",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carrito_FkCamioneta",
-                table: "Carrito",
+                name: "IX_Itinerarios_FkCamioneta",
+                table: "Itinerarios",
                 column: "FkCamioneta");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carrito_FkUsuario",
-                table: "Carrito",
+                name: "IX_Reservas_FkCamioneta",
+                table: "Reservas",
+                column: "FkCamioneta");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservas_FkDestino",
+                table: "Reservas",
+                column: "FkDestino");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservas_FkUsuario",
+                table: "Reservas",
                 column: "FkUsuario");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carrito_metodo_PagoPkMetodo",
-                table: "Carrito",
-                column: "metodo_PagoPkMetodo");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_usuario_FkRol",
-                table: "usuario",
+                name: "IX_Usuarios_FkRol",
+                table: "Usuarios",
                 column: "FkRol");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Carrito");
+                name: "Itinerarios");
 
             migrationBuilder.DropTable(
-                name: "itinerario");
+                name: "Reservas");
 
             migrationBuilder.DropTable(
-                name: "Camioneta");
+                name: "Camionetas");
 
             migrationBuilder.DropTable(
-                name: "Metodo_pago");
+                name: "Destinos");
 
             migrationBuilder.DropTable(
-                name: "usuario");
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Roles");

@@ -1,551 +1,1173 @@
-﻿@{
+﻿@model IEnumerable<Meditours.Models.Destinos>
+@{
     ViewData["Title"] = "Home Page";
+     Layout = "_Layout";
 }
 
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" 
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <div class="header-banner">
-            <h1>MEDITOURS</h1>
-            <h3>Recorre Cancun y el Caribe mexicano con nosotros</h3>
-        </div>
-        <div class="clear"></div>
-        <nav>
-            <!-- <div class="site-title">Finland</div> -->
-            <!-- <h2>MEDITOURS</h2> -->
-            <ul>
-                <li> <button type="button" class="btn btn-light" id="carrito"> <img src=carritonegro.png height="24px" weight="24px"> Mi carrito</button> </li>
-                <li> <button type="button" class="btn btn-light"> <img src=bag.png height="24px" weight="24px">Paquetes</a></li>
-                <li><button type="button" class="btn btn-light"> <img src=telefono.png height="24px" weight="24px">Contacto</a></li>
-                <li><a asp-action="Login" asp-controller="Home"> <button type="button" class="btn btn-light"> <img src=icon.png height="24px" weight="24px"> Iniciar sesion</a></li>
-    </div>
-</div>
+ 
 
-            <ul>
-        </nav>
-    </header>
 
-    <div class="container">
-        <h2>Lugares a visitar</h2>  
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
-      
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="pancancun.jpg" alt="Playa defines" style="width:100%;">
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+        <div class="row gx-0">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Cancun, Quintana Roo, MX</small>
+                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>998 129 0895</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>Meditours@gmail.com</small>
+                </div>
             </div>
-      
-            <div class="item">
-              <img src="chichenpanorama.jpg" alt="Chichen" style="width:100%;">
+            <div class="col-lg-4 text-center text-lg-end">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://es-la.facebook.com/TransportescancunMeditours1/"><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                </div>
             </div>
-          
-            <div class="item">
-              <img src="xcaret.jpg" alt="Xcaret" style="width:100%;">
-            </div>
-          </div>
-      
-          <!-- Left and right controls -->
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-          </a>
         </div>
     </div>
+    <!-- Topbar End -->
 
-	 <br>
 
-   <div class="container" id="container-first">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQem-xFxxBSRUPK7oDTiXxNUv16QRfkreeMKw&usqp=CAU" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Holbox</h5>
-              <p class="card-text">Viaja hasta la paradisiaca isla de Holbox y armonizate con la naturaleza</p>
-              <a href="#" class="btn btn-primary">Comprar</a>
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Meditours</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <!-- <a href="index.html" class="nav-item nav-link active">Inicio</a> -->
+                        <a href="service.html" class="nav-item nav-link">Tours & Actividades</a>
+                        <a href="package.html" class="nav-item nav-link">Paquetes</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Destinos</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="destination.html" class="dropdown-item">Tulum</a>
+                                <a href="booking.html" class="dropdown-item">Chichen Itza</a>
+                                <a href="team.html" class="dropdown-item">Xcaret</a>
+                                <a href="testimonial.html" class="dropdown-item">Cozumel</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contacto</a>
+                    </div>
+						  <a href="" class="btn btn-primary rounded-pill py-2 px-4" style="margin: 4px;"><span class="glyphicon glyphicon-shopping-cart"></span>Mi carrito</a>
+						  <br>
+                    <a asp-action="Index" asp-controller="Login" class="btn btn-primary rounded-pill py-2 px-4">Iniciar sesion</a>
+                </div>
+            </nav>
+    
+
+        <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+            <div class="container py-5">
+                <div class="row justify-content-center py-5">
+                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown">Tus vacaciones comienzan aqui</h1>
+                        <p class="fs-4 text-white mb-4 animated slideInDown">Meditours te ofrece un sinfin de opciones para pasar tus vacaciones en la Riviera Maya y sus alrededores</p>
+                        <div class="position-relative w-75 mx-auto animated slideInDown">
+                            <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Chichen Itza">
+                            <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;">Buscar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </div>
+    <!-- Navbar & Hero End -->
 
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2019/07/Copia-de-Fotolia_68533084_Subscription_Monthly_XL.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Isla Mujeres</h5>
-              <p class="card-text">Descubre Isla Mujeres y pasa un dia entero buceando e interactuando con delfines</p>
-              <a href="#" class="btn btn-primary">Comprar</a>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/35/e8/6b.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Tulum y Coba</h5>
-              <p class="card-text">Pasea por la ciudad amurallada de Tulum y la zona arqueologica de Coba</p>
-              <a href="#" class="btn btn-primary">Comprar</a>
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="https://mexicotur.com/wp-content/uploads/2020/09/SprinterS.jpg.webp" alt="" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">¿Quienes somos?</h6>
+                    <h1 class="mb-4">Somos <span class="text-primary">Meditours</span></h1>
+                    <p class="mb-4">Una empresa de transporte privado y tours en la Riviera Maya, con mas de 10 años de experiencia</p>
+                    <p class="mb-4">Contamos con una gran flota de transporte privado para familias, grupos y reuniones, asi como  </p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Flota de transporte modernizada</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Traslados a Hoteles</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Servicio de 5 estrellas</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Snacks y bebidas incluidas</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Transporte con wifi y aire acondicionado</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Servicio 24/7</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-          </div>
         </div>
-      </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">conoce</h6>
+                <h1 class="mb-5">Nuestros Servicios</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                            <h5>Tours</h5>
+                            <p>Te llevamos a conocer los extraordinarios sitios de la Riviera Maya y el Caribe Mexicano</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
+                            <h5>Transporte a tu hotel</h5>
+                            <p>Te llevamos desde el Aeropuerto hasta la puerta de tu hotel y desde cualquier sitio que te encuentres</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
+                            <h5>Guias certificados</h5>
+                            <p>Nuestros guias totalmente capacitados te acompañaran durante tus vacaciones; 100% biligues y 200% carismaticos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-cog text-primary mb-4"></i>
+                            <h5>Seguro incluido</h5>
+                            <p>Tenemos plan de seguros incluido durante tu viaje; viaja con la mayor seguridad y confianza </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Destination Start -->
+    <div class="container-xxl py-5 destination">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Nuestros</h6>
+                <h1 class="mb-5">Destinos Favoritos</h1>
+            </div>
+            <div class="row g-3">
+                <div class="col-lg-7 col-md-6">
+                    <div class="row g-3">
+                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="@ViewBag.Holbox.Urlimg" alt="">
+                                <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">30% OFF</div>
+                                <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">@ViewBag.Holbox.Nombre</div>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="@ViewBag.Cozumel.Urlimg" alt="">
+                                <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">25% OFF</div>
+                                <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">@ViewBag.Cozumel.Nombre</div>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="@ViewBag.Coloradas.Urlimg" alt="">
+                                <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">35% OFF</div>
+                                <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">@ViewBag.Coloradas.Nombre</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
+                    <a class="position-relative d-block h-100 overflow-hidden" href="">
+                        <img class="img-fluid position-absolute w-100 h-100" src="@ViewBag.Isla.Urlimg" alt="" style="object-fit: cover;">
+                        <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">20% OFF</div>
+                        <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">@ViewBag.Isla.Nombre</div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <br>
-    <br>
-    <br>
+    <!-- Destination Start -->
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://descubro.mx/wp-content/uploads/2020/04/Xcaret-2.jpg?width=1200&enable=upscale" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Parques Xcaret</h5>
-              <p class="card-text">Descubre Xcaret, Xelha, Xplor y muchos parques mas con esta increible opcion</p>
-              <a href="#" class="btn btn-primary">Comprar</a>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://www.barcelo.com/guia-turismo/wp-content/uploads/2021/02/riviera-maya-chichen-itza-pal.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Chichen Itza</h5>
-              <p class="card-text">Visita esta maravilla del mundo y refrescate en los cenotes de la region</p>
-              <a href="#" class="btn btn-primary">Comprar</a>
+    <!-- Package Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Increibles</h6>
+                <h1 class="mb-5">Paquetes para ti</h1>
             </div>
-          </div>
-        </div>
-
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://www.reportur.com/wp-content/uploads/2019/09/playa-puerto-morelos.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Puerto Morelos</h5>
-              <p class="card-text">Pasa un dia completo entre arrecifes y manglares y termina con la vida nocturna de este encantador destino</p>
-              <a href="#" class="btn btn-primary">Comprar</a>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="@ViewBag.Yucatan.Urlimg" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>4 dias</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>7 personas</small>
+                        </div>
+                        <div class="text-center p-4">
+                            <h2 class="mb-1">Tour Yucatan Magico</h2>
+                            <h3 class="mb-0">$@ViewBag.Yucatan.Precio .00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p>@ViewBag.Yucatan.Descripcion</p>
+                            <div class="d-flex justify-content-center mb-2">
+										<a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+										<a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="@ViewBag.Chichen.Urlimg" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>1 dia</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>6 personas</small>
+                        </div>
+                        <div class="text-center p-4">
+                            <h2 class="mb-1">Tour Chichen Itza</h2>
+                            <h3 class="mb-0">$@ViewBag.Chichen.Precio .00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p>@ViewBag.Chichen.Descripcion</p>
+                            <div class="d-flex justify-content-center mb-2">
+										<a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+										<a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="@ViewBag.Xcaret.Urlimg" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>6 dias</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>6 personas</small>
+                        </div>
+                        <div class="text-center p-4">
+									 <h2 class="mb-1">Parques Xcaret</h2>
+                            <h3 class="mb-0">$@ViewBag.Xcaret.Precio .00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p>@ViewBag.Xcaret.Descripcion</p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="@ViewBag.Isla.Urlimg" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>2 dias</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>4 personas</small>
+                        </div>
+                        <div class="text-center p-4">
+									 <h2 class="mb-1">Tour Isla Mujeres</h2>
+                            <h3 class="mb-0">$@ViewBag.Isla.Precio .00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p>Lanzate a Isla Mujeres y pasa dos dias enteros nadando con delfines y visitando el parque Garrafon</p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="@ViewBag.Puerto.Urlimg" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>1 dia</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>6 personas</small>
+                        </div>
+                        <div class="text-center p-4">
+									 <h2 class="mb-1">Tour Puerto Morelos</h2>
+                            <h3 class="mb-0">$@ViewBag.Puerto.Precio .00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p>@ViewBag.Puerto.Descripcion</p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="@ViewBag.Cozumel.Urlimg" alt="">
+                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>6 dias</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>6 personas</small>
+                        </div>
+                        <div class="text-center p-4">
+									 <h2 class="mb-1">Tour Cozumel</h2>
+                            <h3 class="mb-0">$2199.00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <p>Conoce Cozumel, bucea por sus aguas, descubre sus playas virgenes y muchos rincones de esta bella isla</p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-          </div>
         </div>
-      </div>
     </div>
+    <!-- Package End -->
 
-    <br><br>
 
-	 <footer class="bg-light text-center text-white">
-		<!-- Grid container -->
-		<div class="container p-4 pb-0">
-		  <!-- Section: Social media -->
-		  <section class="mb-4">
-			 <!-- Facebook -->
-			 <a
-				class="btn text-white btn-floating m-1"
-				style="background-color: #3b5998;"
-				href="#!"
-				role="button"
-				><i class="fab fa-facebook-f"></i
-			 ></a>
-	 
-			 <!-- Twitter -->
-			 <a
-				class="btn text-white btn-floating m-1"
-				style="background-color: #55acee;"
-				href="#!"
-				role="button"
-				><i class="fab fa-twitter"></i
-			 ></a>
-	 
-			 <!-- Google -->
-			 <a
-				class="btn text-white btn-floating m-1"
-				style="background-color: #dd4b39;"
-				href="#!"
-				role="button"
-				><i class="fab fa-google"></i
-			 ></a>
-	 
-			 <!-- Instagram -->
-			 <a
-				class="btn text-white btn-floating m-1"
-				style="background-color: #ac2bac;"
-				href="#!"
-				role="button"
-				><i class="fab fa-instagram"></i
-			 ></a>
-	 
-			 <!-- Linkedin -->
-			 <a
-				class="btn text-white btn-floating m-1"
-				style="background-color: #0082ca;"
-				href="#!"
-				role="button"
-				><i class="fab fa-linkedin-in"></i
-			 ></a>
-			 <!-- Github -->
-			 <a
-				class="btn text-white btn-floating m-1"
-				style="background-color: #333333;"
-				href="#!"
-				role="button"
-				><i class="fab fa-github"></i
-			 ></a>
-		  </section>
-		  <!-- Section: Social media -->
-		</div>
-		<!-- Grid container -->
-	 
-		<!-- Copyright -->
-		<div class="text-center p-3" style="background-color: #333333;">
-		  © 2022 Meditours |
-		  <a class="text-white" href="https://mdbootstrap.com/">Powered by MDBootstrap.com</a>
-		</div>
-		<!-- Copyright -->
-	 </footer>
-
+    <!-- Booking Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="booking p-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-md-6 text-white">
+                        <h6 class="text-white text-uppercase">Reserva tu paseo con nosotros</h6>
+                        <h1 class="text-white mb-4">¿Tienes dudas?</h1>
+                        <p class="mb-4">Pregunta y reserva con nosotros tu primer destino al pisar el Caribe Mexicano. Recuerda que puedes solicitar cotizacion y disponibilidad a la hora de preguntar</p>
 
     
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="text-white mb-4">¿Quieres visitar la Riviera Maya?</h1>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control bg-transparent" id="name" placeholder="Tu nombre">
+                                        <label for="name" text="bg-white">Tu name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control bg-transparent" id="email" placeholder="Tu correo">
+                                        <label for="email">Tu correo</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="text" class="form-control bg-transparent datetimepicker-input" id="datetime" placeholder="Fecha de visita" data-target="#date3" data-toggle="datetimepicker" />
+                                        <label for="datetime">Fecha de visita</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="text" class="form-control bg-transparent datetimepicker-input" id="destination" placeholder="Tu destino"/>
+                                        <label for="datetime">Tu destino</label>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select bg-transparent" id="select1">
+                                            <option value="1">Destination 1</option>
+                                            <option value="2">Destination 2</option>
+                                            <option value="3">Destination 3</option>
+                                        </select>
+                                        <label for="select1">Destination</label>
+                                    </div>
+                                </div> -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control bg-transparent" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Tu mensaje</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-outline-light w-100 py-3" type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking Start -->
+
+
+    <!-- Process Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center pb-4 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Nuestro</h6>
+                <h1 class="mb-5">Proceso de compra</h1>
+            </div>
+            <div class="row gy-5 gx-4 justify-content-center">
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        @*<div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <i class="fa fa-globe fa-3x text-white"></i>
+                        </div>*@
+                        <h5 class="mt-4">Escoge tu paquete</h5>
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <p class="mb-0">Escoge cualquiera de las diferentes opciones que tenemos para hacer en la Riviera Maya</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        @*<div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <i class="fa fa-dollar-sign fa-3x text-white"></i>
+                        </div>*@
+                        <h5 class="mt-4">Paga en linea</h5>
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <p class="mb-0">Realiza tu compra con cualquier tarjeta de credito y/o debito, tambien paga con efectivo</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        @*<div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <i class="fa fa-plane fa-3x text-white"></i>
+                        </div>*@
+                        <h5 class="mt-4">Preparate para tu aventura</h5>
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <p class="mb-0">Una vez comprado, espera la confirmacion de tu compra y preparate para las vacaciones de tu vida</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Process Start -->
+
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Conoce a</h6>
+                <h1 class="mb-5">Nuestro equipo</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/team-1.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Carlos Alberto Fuentes</h5>
+                            <small>Designation</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/team-2.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Alejandro Perez</h5>
+                            <small>Designation</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/team-3.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Cristhian Huchim</h5>
+                            <small>Designation</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/team-4.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Angel Zea</h5>
+                            <small>Designation</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/team-4.jpg" alt="">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="text-center p-4">
+                            <h5 class="mb-0">Aranza Medina</h5>
+                            <small>Designation</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+      
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Compañia</h4>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contacto</a>
+                    <a class="btn btn-link" href="">Terms & Condiciones</a>
+                    <a class="btn btn-link" href="">Ayuda</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Cancun, Quintana Roo, MX</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>998 129 0895</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>Meditours@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Suscribete a nuestro Newsletter</h4>
+                    <p>Y descubre las noticias y promociones que tenemos para ti</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Suscribirme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Meditours</a>, All Right Reserved. 2022
+
+                    
+                        Designed By <a class="border-bottom" href="#">Coding Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
 
-                <style>
+<script>
+    (function ($) {
+    "use strict";
 
-/* Header */
-header {
-    height: 360px;
-    z-index: 10;
+    // Spinner
+    var spinner = function () {
+        setTimeout(function () {
+            if ($('#spinner').length > 0) {
+                $('#spinner').removeClass('show');
+            }
+        }, 1);
+    };
+    spinner();
+    
+    
+    // Initiate the wowjs
+    new WOW().init();
+
+
+    // Sticky Navbar
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 45) {
+            $('.navbar').addClass('sticky-top shadow-sm');
+        } else {
+            $('.navbar').removeClass('sticky-top shadow-sm');
+        }
+    });
+    
+    
+    // Dropdown on mouse hover
+    const $dropdown = $(".dropdown");
+    const $dropdownToggle = $(".dropdown-toggle");
+    const $dropdownMenu = $(".dropdown-menu");
+    const showClass = "show";
+    
+    $(window).on("load resize", function() {
+        if (this.matchMedia("(min-width: 992px)").matches) {
+            $dropdown.hover(
+            function() {
+                const $this = $(this);
+                $this.addClass(showClass);
+                $this.find($dropdownToggle).attr("aria-expanded", "true");
+                $this.find($dropdownMenu).addClass(showClass);
+            },
+            function() {
+                const $this = $(this);
+                $this.removeClass(showClass);
+                $this.find($dropdownToggle).attr("aria-expanded", "false");
+                $this.find($dropdownMenu).removeClass(showClass);
+            }
+            );
+        } else {
+            $dropdown.off("mouseenter mouseleave");
+        }
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
+    });
+
+
+    // Testimonials carousel
+    $(".testimonial-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        center: true,
+        margin: 24,
+        dots: true,
+        loop: true,
+        nav : false,
+        responsive: {
+            0:{
+                items:1
+            },
+            768:{
+                items:2
+            },
+            992:{
+                items:3
+            }
+        }
+    });
+    
+})(jQuery);
+
+
+</script>
+
+<style>
+    :root {
+    --primary: #385170;
+    --secondary: #FE8800;
+    --light: #F5F5F5;
+    --dark: #14141F;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.fw-semi-bold {
+    font-weight: 700 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+.bg-white {
+    background-color: #ececec !important;
+}
+
+.bg-primary {
+    background-color: #385170 !important
+}
+ 
+.border-primary {
+    border-color: #385170 !important;
+}
+
+/*** Button ***/
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn-primary {
+    color: #000;
+    background-color: #9fd3c7;
+    border-color: #9fd3c7;
+}
+
+.btn-primary :hover{
+    background-color: #000;
+    border-color: #000;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 0px;
 }
 
 
-.header-banner {
-    background-image: url('https://a.cdn-hotels.com/gdcs/production81/d305/dd228943-8b28-443d-bfbb-99599e38b471.jpg');
-    background-position: center;
+/*** Navbar ***/
+.navbar-light .navbar-nav .nav-link {
+    font-family: 'Nunito', sans-serif;
+    position: relative;
+    margin-right: 25px;
+    padding: 35px 0;
+    color: #FFFFFF !important;
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+    transition: .5s;
+}
+
+.sticky-top.navbar-light .navbar-nav .nav-link {
+    padding: 20px 0;
+    color: var(--dark) !important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary) !important;
+}
+
+.navbar-light .navbar-brand img {
+    max-height: 60px;
+    transition: .5s;
+}
+
+.sticky-top.navbar-light .navbar-brand img {
+    max-height: 45px;
+}
+
+    .navbar-light .navbar-collapse {
+        margin-top: 15px;
+        border-top: 1px solid #DDDDDD;
+    }
+
+    .navbar-light .navbar-nav .nav-link,
+    .sticky-top.navbar-light .navbar-nav .nav-link {
+        padding: 10px 0;
+        margin-left: 0;
+        color: var(--dark) !important;
+    }
+
+    .navbar-light .navbar-brand img {
+        max-height: 45px;
+    }
+}
+    
+    .sticky-top.navbar-light {
+        position: fixed;
+        background: #FFFFFF;
+    }
+
+    .navbar-light .navbar-nav .nav-link::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 2px;
+        bottom: -1px;
+        left: 50%;
+        background: var(--primary);
+        transition: .5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover::before,
+    .navbar-light .navbar-nav .nav-link.active::before {
+        width: calc(100% - 2px);
+        left: 1px;
+    }
+
+    .navbar-light .navbar-nav .nav-link.nav-contact::before {
+        display: none;
+    }
+}
+
+
+/*** Hero Header ***/
+.hero-header {
+    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/Chichen-Itza-2.jpg);
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
-    height: 300px;
 }
 
-.header-banner a{
-	color: black;
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, .5);
 }
 
-header h1 {
 
-	 text-shadow: 0.1em 0.1em 0.05em #333;
-    color: #fff;
-    padding: 16 1rem;
+/*** Section Title ***/
+.section-title {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.section-title::before {
     position: absolute;
-    top: 14rem; 
-    left: 2rem;
-	 font-size: 75px;
-	 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-	 letter-spacing: 6px;
-	 animation-duration: 2s;
-	 animation-name: slidein_1;
+    content: "";
+    width: calc(100% + 80px);
+    height: 2px;
+    top: 4px;
+    left: -40px;
+    background: var(--primary);
+    z-index: -1;
 }
 
-
-
-header h3 {
-    
-    color: #fff;
-    padding: 16 1rem;
+.section-title::after {
     position: absolute;
-    top: 22rem; 
-    left: 2rem;
-	 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-	 text-shadow: 0.1em 0.1em 0.05em #333;
-	 animation-duration: 3s;
-	 animation-name: slidein_2;
+    content: "";
+    width: calc(100% + 120px);
+    height: 2px;
+    bottom: 5px;
+    left: -60px;
+    background: var(--primary);
+    z-index: -1;
 }
 
-
-display-2 h2{
-  font-family: cursive;
-
-}
-
-.fixed-header {
-    position: fixed;
-    top: 0;
+.section-title.text-start::before {
+    width: calc(100% + 40px);
     left: 0;
-    width: 100%; 
 }
 
-nav {
+.section-title.text-start::after {
+    width: calc(100% + 60px);
+    left: 0;
+}
+
+
+/*** Service ***/
+.service-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    transition: .5s;
+}
+
+.service-item:hover {
+    background: var(--primary);
+}
+
+.service-item * {
+    transition: .5s;
+}
+
+.service-item:hover * {
+    color: #ececec!important;
+}
+
+
+/*** Destination ***/
+.destination img {
+    transition: .5s;
+}
+
+.destination a:hover img {
+    transform: scale(1.1);
+}
+
+.div.bg-white.text-primary.fw-bold.position-absolute.bottom-0.end-0.m-3.py-1.px-2{
+    background-color: transparent;
+}
+
+#panoramic-destination{
     width: 100%;
-    height: 60px;
-    background: #7FBCD2;
-    position: sticky;
-    z-index: 999px;
+    max-height: 20%;
 }
 
-nav div {
-    color: white;
-    font-size: 2rem;
-    line-height: 60px;
-    position: absolute;
-    top: 0;
-    left: 2%;
-    visibility: hidden;
-}
-.visible-title {
-    visibility: visible;
+/*** Package ***/
+.package-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    background-color: #ececec;
 }
 
-nav ul { 
-    list-style-type: none;
-    margin: 0 2% auto 0;
-    padding-left: 0;
-    text-align: right;
-    max-width: 100%;
+.package-item img {
+    transition: .5s;
 }
 
-nav ul li { 
-    display: inline-block; 
-    line-height: 60px;
-    margin-left: 10px;
-    font-size: 17px;
+.package-item:hover img {
+    transform: scale(1.1);
 }
 
-nav ul li a {
-    text-decoration: none; 
+
+/*** Booking ***/
+.booking {
+    background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../img/tulum-1.jpg);
+	 /* background:  red, url(../img/tulum-1.jpg); */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*** Team ***/
+.team-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+}
+
+.team-item img {
+    transition: .5s;
+}
+
+.team-item:hover img {
+    transform: scale(1.1);
+}
+
+.team-item .btn {
+    background: #FFFFFF;
+    color: var(--primary);
+    border-radius: 20px;
+    border-bottom: 1px solid var(--primary);
+}
+
+.team-item .btn:hover {
+    background: var(--primary);
+    color: #FFFFFF;
+}
+
+.bg-dark {
+    background-color: #142d4c !important;
+}
+
+.text-primary {
+    color:  #385170 !important;
+}
+
+
+.div.container.py-5 {
+    background-color: #FFEEAF;
+    color: #FFEEAF
+}
+
+
+.footer .btn.btn-social {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #ffffff;
+    font-weight: normal;
+    border: 1px solid #ffffff;
+    border-radius: 35px;
+    transition: .3s;
 }
 
-nav h2{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: white;
-    font-weight: bold;
-    font-size: 50px;
+.footer .btn.btn-social:hover {
+    color: var(--primary);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
     text-align: left;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
 }
 
-button.btn{
-	background-color: #A5F1E9;
-  font-size: 4px;
-  padding: 10px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  color:#26272b;
-  text-shadow: #ffffff;
-  border-style: none;
-  font-size: large;
-  
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
 }
 
-button.btn.btn-light{
-	background-color: #A5F1E9;
-  font-size: 15px;
-  font-weight: bolder;
+.footer .btn.btn-link:hover {
+    letter-spacing: 1px;
+    box-shadow: none;
 }
 
-button.btn.btn-light :hover{
-  text-shadow: #ffffff;
+.footer .copyright {
+    padding: 25px 0;
+    font-size: 15px;
+    border-top: 1px solid rgba(256, 256, 256, .1);
 }
 
-
-
-/* demo content */
-body { 
-    background-color: #E1FFEE;
-    font-family: helvetica;
-    line-height: 1.6;
-}
-.content{ 
-    margin: 0 auto;
-    padding: 4rem 0;
-    width: 960px;
-    max-width: 100%;
+.footer .copyright a {
+    color: var(--light);
 }
 
-
-article {
-    float: left;
-    width: 720px;
-}
-article p:first-of-type {
-    margin-top: 0;
-}
-aside {
-    float: right;
-    width: 120px;
-}
-p img {
-    max-width: 100%;
+.footer .footer-menu a {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, .1);
 }
 
-
-    article {
-        float: none;
-        margin: 0 auto;
-        width: 96%;
-    }
-    article:last-of-type {  
-        margin-bottom: 3rem;
-    }
-    aside {  
-        float: none;
-        text-align: center;
-        width: 100%;
-    }
+.footer .footer-menu a:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none;
 }
 
-
-.card{
-  box-shadow: 7px 7px 12px 0 rgba(20, 20, 20, 0.3);
-	background-color: #A5F1E9;
-	border-style: none;
-	text-align: center;
+a.btn.btn-sm.btn-primary.px-3.border-end :hover{
+    border-color: #14141F;
+    background-color: #14141F;
 }
-
-.card-title{
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-weight: 600;
-	font-size: 20px;
-	color: #037569 ;
-}
-
-.card-text{
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	color: #037569 ;
-	text-align: center;
-}
-
-/* footer */
-
-div.container.p-4.pb-0{
-	width: auto;
-}
-
-.container.p-4.pb-0{
-	background-color: #FFEEAF ;
-}
-
-div.text-center.p-3{
-	background-color: #333333;
-}
-
-
-.site-footer
-{
-  background-color:#26272b;
-  padding:45px 0 20px;
-  font-size:15px;
-  line-height:24px;
-  color:#64d8ed;
-}
-.site-footer hr
-{
-  border-top-color:#FFEEAF;
-  opacity:0.5
-}
-.site-footer hr.small
-{
-  margin:20px 0
-}
-.site-footer h6
-{
-  color:#fff;
-  font-size:16px;
-  text-transform:uppercase;
-  margin-top:5px;
-  letter-spacing:2px
-}
-.site-footer a
-{
-  color:#737373;
-}
-.site-footer a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
-}
-.footer-links
-{
-  padding-left:0;
-  list-style:none
-}
-.footer-links li
-{
-  display:block
-}
-.footer-links a
-{
-  color:#737373
-}
-.footer-links a:active,.footer-links a:focus,.footer-links a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
-}
-.footer-links.inline li
-{
-  display:inline-block
-}
-.site-footer .social-icons
-{
-  text-align:right
-}
-.site-footer .social-icons a
-{
-  width:40px;
-  height:40px;
-  line-height:40px;
-  margin-left:6px;
-  margin-right:0;
-  border-radius:100%;
-  background-image: url="https://icons.iconarchive.com/icons/danleech/simple/256/facebook-icon.png";
-}
-.copyright-text
-{
-  margin:0
-}
-
-.social-icons
-{
-  padding-left:0;
-  margin-bottom:0;
-  list-style:none
-}
-.social-icons li
-{
-  display:inline-block;
-  margin-bottom:4px
-}
-.social-icons li.title
-{
-  margin-right:15px;
-  text-transform:uppercase;
-  color:#96a2b2;
-  font-weight:700;
-  font-size:13px
-}
-
-
 
 </style>

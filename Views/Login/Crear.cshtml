@@ -1,0 +1,46 @@
+﻿@model Meditours.Models.Usuarios
+@{
+    ViewData["Title"] = "Crear";
+     Layout = "_DashboardLayout";
+}
+
+<div class="container-fluid">
+	<div class="offset-12">
+		<div class="card borrder">
+			<div class="card-header bg-dark" >
+				<h1 class="text-white">@ViewData["Title"]</h1>
+			</div>
+			<div class="card-body">
+				<form asp-action="CrearUsuario" method="post">
+					<div class="form-group">
+						<label asp-for="Nombre" class="Control-label"></label>
+						<input asp-for="Nombre" class="form-control" placeholder="Ingresa nombre" required/>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="User" class="Control-label"></label>
+						<input asp-for="User" class="form-control" placeholder="Ingresa user" required/>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="password" class="Control-label"></label>
+						<input asp-for="password" class="form-control" placeholder="Ingresa password" required/>
+					</div>
+					
+					<div class="form-group mt-3">
+						<label asp-for="FkRol" class="Control-label"></label>
+						<select asp-for="FkRol" asp-items="ViewBag.combo" class="select2-placeholder-multiple form-control"> <option value="">--selecciona--</option></select>
+					</div>
+
+					<div class="form-group mt-3">
+						<button type="submit" class="btn btn-secondary d-block mx-auto"> guardar</button>
+
+					</div>
+				</form>
+					<a asp-controller="Home" asp-action="Index" > Volver</a>
+
+			</div>
+
+		</div>
+	</div>
+</div>

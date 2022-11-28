@@ -1,11 +1,12 @@
-﻿@model IEnumerable<Meditours.Models.usuario>
+﻿@model IEnumerable<Meditours.Models.Usuarios>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Usuarios";
+     Layout = "_DashboardLayout";
 }
 
 <div class="row">
     <div class="offset-9 col-3 mb-3">
-        <a asp-action="Crear" asp-controller="Home" class="btn btn-success" d-block mx-auto btn-lg> <i class="fa-solid fa-user"></i> Nuevo Usuario</a>
+        <a asp-action="Crear" asp-controller="Login" class="btn btn-success" d-block mx-auto btn-lg> <i class="fa-solid fa-user"></i> Nuevo Usuario</a>
     </div>
 </div>
 
