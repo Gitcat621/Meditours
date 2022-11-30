@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Meditours.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221126204844_Example")]
+    [Migration("20221130044117_Example")]
     partial class Example
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

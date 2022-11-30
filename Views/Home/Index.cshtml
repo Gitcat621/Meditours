@@ -68,13 +68,13 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <!-- <a href="index.html" class="nav-item nav-link active">Inicio</a> -->
-                        <a href="service.html" class="nav-item nav-link">Tours & Actividades</a>
-                        <a href="package.html" class="nav-item nav-link">Paquetes</a>
+                        <a asp-action="Index" asp-controller="Destinos" class="nav-item nav-link">Tours & Actividades</a>
+                        <a asp-action="Paquetes" asp-controller="Destinos" class="nav-item nav-link">Paquetes</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Destinos</a>
                             <div class="dropdown-menu m-0">
                                 <a href="destination.html" class="dropdown-item">Tulum</a>
-                                <a href="booking.html" class="dropdown-item">Chichen Itza</a>
+                                <a asp-action="Destino" asp-controller="Destinos" asp-route-id=@ViewBag.Chichen.PkDestino class="dropdown-item">Chichen Itza</a>
                                 <a href="team.html" class="dropdown-item">Xcaret</a>
                                 <a href="testimonial.html" class="dropdown-item">Cozumel</a>
                             </div>

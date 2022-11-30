@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Meditours.Models.Destinos>
+@{
+    ViewData["Title"] = "Destinos";
+     Layout = "_DashboardLayout";
+}
+
+<div  class="container-fluid">
+    <div class="offset-12"> 
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h1 class="text-white"><strong>Lista de usuarios</strong></h1>
+
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive"> 
+                    <form  asp-controller="Carrito" asp-action="Agregar" method="post">
+                    <table class="table table-bordered align-middle" id="tblUsuarios" width="100%" cellspacing="0">
+                        <thead>               
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Precio)/th>
+                                <th>img)/th>
+                                <th> Acciones </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                    <td  asp-for="Nombre" >@ViewBag.Destino.Nombre</td>
+                                    <td asp-for="Descripcion" >@ViewBag.Destino.Descripcion</td>
+                                    <td >@ViewBag.Destino.Precio</td>
+                                    <td><img src="@ViewBag.Destino.Urlimg" width="50"/></td>
+                                    <td>
+                                       <button type="submit" class="btn btn-secondary d-block mx-auto"> Comprar</button>
+                                </tr>
+                        </tbody>
+                        </table>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //Llamar a datatable
+            $('#tblUsuarios').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando START a END de TOTAL Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de MAX total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar MENU Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        }); 
+    </script>
+
+}
