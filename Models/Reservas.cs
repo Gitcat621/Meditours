@@ -7,19 +7,18 @@ namespace Meditours.Models
     {
         [Key]
         public int PkReserva { get; set; }
-        public int HraSalida { get; set; }
 
         [ForeignKey("Usuarios")]
         public int FkUsuario { get; set; }
         public Usuarios Usuarios { get; set; }
+
+        [ForeignKey("Itinerarios")]    
+        public int FkItinerario { get; set; }
+        public Itinerarios Itinerarios { get; set; }
+
         [ForeignKey("Destinos")]
         public int FkDestino { get; set; }
         public Destinos Destinos { get; set; }
-
-        [ForeignKey("Camionetas")]
-        public int FkCamioneta { get; set; }
-        public Camionetas Camionetas { get; set; }
-        public string Dia { get; set; }
 
     }
 }

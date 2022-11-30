@@ -30,10 +30,13 @@ namespace Meditours.Controllers
             ViewData["Isla"] = await _context.Destinos.Where(x => x.PkDestino == 2).FirstOrDefaultAsync();
             ViewData["Cozumel"] = await _context.Destinos.Where(x => x.PkDestino == 3).FirstOrDefaultAsync();
             ViewData["Coloradas"] = await _context.Destinos.Where(x => x.PkDestino == 4).FirstOrDefaultAsync();
-            ViewData["Yucatan"] = await _context.Destinos.Where(x => x.PkDestino == 5).FirstOrDefaultAsync();
-            ViewData["Chichen"] = await _context.Destinos.Where(x => x.PkDestino == 6).FirstOrDefaultAsync();
-            ViewData["Xcaret"] = await _context.Destinos.Where(x => x.PkDestino == 7).FirstOrDefaultAsync();
-            ViewData["Puerto"] = await _context.Destinos.Where(x => x.PkDestino == 8).FirstOrDefaultAsync();
+
+            ViewData["PYucatan"] = await _context.Paquetes.Where(x => x.PkPaquete == 1).FirstOrDefaultAsync();
+            ViewData["PChichen"] = await _context.Paquetes.Where(x => x.PkPaquete == 2).FirstOrDefaultAsync();
+            ViewData["PXcaret"] = await _context.Paquetes.Where(x => x.PkPaquete == 3).FirstOrDefaultAsync();
+            ViewData["PPuerto"] = await _context.Paquetes.Where(x => x.PkPaquete == 4).FirstOrDefaultAsync();
+            ViewData["PIsla"] = await _context.Paquetes.Where(x => x.PkPaquete == 5).FirstOrDefaultAsync();
+            ViewData["PCozumel"] = await _context.Paquetes.Where(x => x.PkPaquete == 6).FirstOrDefaultAsync();
 
             return View(response);
         }

@@ -74,9 +74,9 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Destinos</a>
                             <div class="dropdown-menu m-0">
                                 <a href="destination.html" class="dropdown-item">Tulum</a>
-                                <a asp-action="Destino" asp-controller="Destinos" asp-route-id=@ViewBag.Chichen.PkDestino class="dropdown-item">Chichen Itza</a>
+                                <a asp-action="Destino" asp-controller="Destinos" asp-route-id= class="dropdown-item">Chichen Itza</a>
                                 <a href="team.html" class="dropdown-item">Xcaret</a>
-                                <a href="testimonial.html" class="dropdown-item">Cozumel</a>
+                                <a asp-action="Destino" asp-controller="Destinos" asp-route-id=@ViewBag.Cozumel.PkDestino class="dropdown-item">Cozumel</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contacto</a>
@@ -255,7 +255,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="package-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="@ViewBag.Yucatan.Urlimg" alt="">
+                            <img class="img-fluid" src="@ViewBag.PYucatan.Urlimg" alt="">
                         </div>
                         <div class="d-flex border-bottom">
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>4 dias</small>
@@ -263,7 +263,7 @@
                         </div>
                         <div class="text-center p-4">
                             <h2 class="mb-1">Tour Yucatan Magico</h2>
-                            <h3 class="mb-0">$@ViewBag.Yucatan.Precio .00</h3>
+                            <h3 class="mb-0">$@ViewBag.PYucatan.Precio .00</h3>
                             <div class="mb-3">
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
@@ -271,7 +271,7 @@
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
                             </div>
-                            <p>@ViewBag.Yucatan.Descripcion</p>
+                            <p>@ViewBag.PYucatan.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
 										<a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
 										<a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
@@ -282,7 +282,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="package-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="@ViewBag.Chichen.Urlimg" alt="">
+                            <img class="img-fluid" src="@ViewBag.PChichen.Urlimg" alt="">
                         </div>
                         <div class="d-flex border-bottom">
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>1 dia</small>
@@ -290,7 +290,7 @@
                         </div>
                         <div class="text-center p-4">
                             <h2 class="mb-1">Tour Chichen Itza</h2>
-                            <h3 class="mb-0">$@ViewBag.Chichen.Precio .00</h3>
+                            <h3 class="mb-0">$@ViewBag.PChichen.Precio .00</h3>
                             <div class="mb-3">
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
@@ -298,7 +298,7 @@
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
                             </div>
-                            <p>@ViewBag.Chichen.Descripcion</p>
+                            <p>@ViewBag.PChichen.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
 										<a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
 										<a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
@@ -309,7 +309,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="package-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="@ViewBag.Xcaret.Urlimg" alt="">
+                            <img class="img-fluid" src="@ViewBag.PXcaret.Urlimg" alt="">
                         </div>
                         <div class="d-flex border-bottom">
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>6 dias</small>
@@ -317,7 +317,7 @@
                         </div>
                         <div class="text-center p-4">
 									 <h2 class="mb-1">Parques Xcaret</h2>
-                            <h3 class="mb-0">$@ViewBag.Xcaret.Precio .00</h3>
+                            <h3 class="mb-0">$@ViewBag.PXcaret.Precio .00</h3>
                             <div class="mb-3">
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
@@ -325,7 +325,7 @@
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
                             </div>
-                            <p>@ViewBag.Xcaret.Descripcion</p>
+                            <p>@ViewBag.PXcaret.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
                                 <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
                                 <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
@@ -336,7 +336,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="package-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="@ViewBag.Isla.Urlimg" alt="">
+                            <img class="img-fluid" src="@ViewBag.PIsla.Urlimg" alt="">
                         </div>
                         <div class="d-flex border-bottom">
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>2 dias</small>
@@ -344,7 +344,7 @@
                         </div>
                         <div class="text-center p-4">
 									 <h2 class="mb-1">Tour Isla Mujeres</h2>
-                            <h3 class="mb-0">$@ViewBag.Isla.Precio .00</h3>
+                            <h3 class="mb-0">$@ViewBag.PIsla.Precio .00</h3>
                             <div class="mb-3">
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
@@ -363,7 +363,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="package-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="@ViewBag.Puerto.Urlimg" alt="">
+                            <img class="img-fluid" src="@ViewBag.PPuerto.Urlimg" alt="">
                         </div>
                         <div class="d-flex border-bottom">
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>1 dia</small>
@@ -371,14 +371,14 @@
                         </div>
                         <div class="text-center p-4">
 									 <h2 class="mb-1">Tour Puerto Morelos</h2>
-                            <h3 class="mb-0">$@ViewBag.Puerto.Precio .00</h3>
+                            <h3 class="mb-0">$@ViewBag.PPuerto.Precio .00</h3>
                             <div class="mb-3">
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
                             </div>
-                            <p>@ViewBag.Puerto.Descripcion</p>
+                            <p>@ViewBag.PPuerto.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
                                 <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
                                 <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
@@ -389,7 +389,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="package-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="@ViewBag.Cozumel.Urlimg" alt="">
+                            <img class="img-fluid" src="@ViewBag.PCozumel.Urlimg" alt="">
                         </div>
                         <div class="d-flex border-bottom">
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>6 dias</small>
@@ -404,7 +404,7 @@
                                 <small class="fa fa-star text-primary"></small>
                                 <small class="fa fa-star text-primary"></small>
                             </div>
-                            <p>Conoce Cozumel, bucea por sus aguas, descubre sus playas virgenes y muchos rincones de esta bella isla</p>
+                            <p>@ViewBag.PCozumel.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
                                 <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
                                 <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>

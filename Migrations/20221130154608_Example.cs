@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Meditours.Migrations
 {
@@ -38,6 +39,22 @@ namespace Meditours.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Paquetes",
+                columns: table => new
+                {
+                    PkPaquete = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Precio = table.Column<int>(type: "int", nullable: false),
+                    Urlimg = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Paquetes", x => x.PkPaquete);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
@@ -56,9 +73,9 @@ namespace Meditours.Migrations
                 {
                     PkItinerario = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HraSalida = table.Column<int>(type: "int", nullable: false),
+                    Dia = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HraSalida = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Capacidad = table.Column<int>(type: "int", nullable: false),
-                    Precio = table.Column<int>(type: "int", nullable: false),
                     FkCamioneta = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -159,6 +176,9 @@ namespace Meditours.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Itinerarios");
+
+            migrationBuilder.DropTable(
+                name: "Paquetes");
 
             migrationBuilder.DropTable(
                 name: "Reservas");

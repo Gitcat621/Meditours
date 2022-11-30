@@ -13,5 +13,6 @@ namespace Meditours.Context
         public DbSet<Destinos> Destinos { get; set; }
         public DbSet<Reservas> Reservas { get; set; }
         public DbSet<Itinerarios> Itinerarios { get; set; }
+        public DbSet<Paquetes> Paquetes { get; set; }
     }
 }
