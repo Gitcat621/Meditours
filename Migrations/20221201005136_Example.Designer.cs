@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Meditours.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221130154608_Example")]
+    [Migration("20221201005136_Example")]
     partial class Example
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,12 +82,22 @@ namespace Meditours.Migrations
                     b.Property<int>("FkCamioneta")
                         .HasColumnType("int");
 
+                    b.Property<int>("FkDestino")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FkPaquete")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("HraSalida")
                         .HasColumnType("datetime2");
 
                     b.HasKey("PkItinerario");
 
                     b.HasIndex("FkCamioneta");
+
+                    b.HasIndex("FkDestino");
+
+                    b.HasIndex("FkPaquete");
 
                     b.ToTable("Itinerarios");
                 });
@@ -123,26 +133,15 @@ namespace Meditours.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Dia")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FkCamioneta")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FkDestino")
+                    b.Property<int>("FkItinerario")
                         .HasColumnType("int");
 
                     b.Property<int>("FkUsuario")
                         .HasColumnType("int");
 
-                    b.Property<int>("HraSalida")
-                        .HasColumnType("int");
-
                     b.HasKey("PkReserva");
 
-                    b.HasIndex("FkCamioneta");
-
-                    b.HasIndex("FkDestino");
+                    b.HasIndex("FkItinerario");
 
                     b.HasIndex("FkUsuario");
 
@@ -198,20 +197,30 @@ namespace Meditours.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Meditours.Models.Destinos", "Destinos")
+                        .WithMany()
+                        .HasForeignKey("FkDestino")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Meditours.Models.Paquetes", "Paquetes")
+                        .WithMany()
+                        .HasForeignKey("FkPaquete")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Camionetas");
+
+                    b.Navigation("Destinos");
+
+                    b.Navigation("Paquetes");
                 });
 
             modelBuilder.Entity("Meditours.Models.Reservas", b =>
                 {
-                    b.HasOne("Meditours.Models.Camionetas", "Camionetas")
+                    b.HasOne("Meditours.Models.Itinerarios", "Itinerarios")
                         .WithMany()
-                        .HasForeignKey("FkCamioneta")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Meditours.Models.Destinos", "Destinos")
-                        .WithMany()
-                        .HasForeignKey("FkDestino")
+                        .HasForeignKey("FkItinerario")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -221,9 +230,7 @@ namespace Meditours.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Camionetas");
-
-                    b.Navigation("Destinos");
+                    b.Navigation("Itinerarios");
 
                     b.Navigation("Usuarios");
                 });

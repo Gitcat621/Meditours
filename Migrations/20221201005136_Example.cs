@@ -76,7 +76,9 @@ namespace Meditours.Migrations
                     Dia = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HraSalida = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Capacidad = table.Column<int>(type: "int", nullable: false),
-                    FkCamioneta = table.Column<int>(type: "int", nullable: false)
+                    FkCamioneta = table.Column<int>(type: "int", nullable: false),
+                    FkDestino = table.Column<int>(type: "int", nullable: false),
+                    FkPaquete = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,6 +88,18 @@ namespace Meditours.Migrations
                         column: x => x.FkCamioneta,
                         principalTable: "Camionetas",
                         principalColumn: "PkCamioneta",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Itinerarios_Destinos_FkDestino",
+                        column: x => x.FkDestino,
+                        principalTable: "Destinos",
+                        principalColumn: "PkDestino",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Itinerarios_Paquetes_FkPaquete",
+                        column: x => x.FkPaquete,
+                        principalTable: "Paquetes",
+                        principalColumn: "PkPaquete",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -117,26 +131,17 @@ namespace Meditours.Migrations
                 {
                     PkReserva = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HraSalida = table.Column<int>(type: "int", nullable: false),
                     FkUsuario = table.Column<int>(type: "int", nullable: false),
-                    FkDestino = table.Column<int>(type: "int", nullable: false),
-                    FkCamioneta = table.Column<int>(type: "int", nullable: false),
-                    Dia = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    FkItinerario = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reservas", x => x.PkReserva);
                     table.ForeignKey(
-                        name: "FK_Reservas_Camionetas_FkCamioneta",
-                        column: x => x.FkCamioneta,
-                        principalTable: "Camionetas",
-                        principalColumn: "PkCamioneta",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reservas_Destinos_FkDestino",
-                        column: x => x.FkDestino,
-                        principalTable: "Destinos",
-                        principalColumn: "PkDestino",
+                        name: "FK_Reservas_Itinerarios_FkItinerario",
+                        column: x => x.FkItinerario,
+                        principalTable: "Itinerarios",
+                        principalColumn: "PkItinerario",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Reservas_Usuarios_FkUsuario",
@@ -152,14 +157,19 @@ namespace Meditours.Migrations
                 column: "FkCamioneta");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservas_FkCamioneta",
-                table: "Reservas",
-                column: "FkCamioneta");
+                name: "IX_Itinerarios_FkDestino",
+                table: "Itinerarios",
+                column: "FkDestino");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservas_FkDestino",
+                name: "IX_Itinerarios_FkPaquete",
+                table: "Itinerarios",
+                column: "FkPaquete");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservas_FkItinerario",
                 table: "Reservas",
-                column: "FkDestino");
+                column: "FkItinerario");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservas_FkUsuario",
@@ -175,13 +185,13 @@ namespace Meditours.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Reservas");
+
+            migrationBuilder.DropTable(
                 name: "Itinerarios");
 
             migrationBuilder.DropTable(
-                name: "Paquetes");
-
-            migrationBuilder.DropTable(
-                name: "Reservas");
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Camionetas");
@@ -190,7 +200,7 @@ namespace Meditours.Migrations
                 name: "Destinos");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Paquetes");
 
             migrationBuilder.DropTable(
                 name: "Roles");

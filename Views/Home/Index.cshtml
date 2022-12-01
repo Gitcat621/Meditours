@@ -8,7 +8,7 @@
 <head>
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/favicon.icon" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,16 +36,16 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Cancun, Quintana Roo, MX</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>998 129 0895</small>
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Cancun, Quintana Roo, MX    </small>
+                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>998 129 0895   </small>
                     <small class="text-light"><i class="fa fa-envelope-open me-2"></i>Meditours@gmail.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZXMifQ%3D%3D%22%7D"><i class="fab fa-twitter fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://es-la.facebook.com/TransportescancunMeditours1/"><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.instagram.com/accounts/login/"><i class="fab fa-instagram fw-normal"></i></a>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
     <div class="container-fluid position-relative p-0">
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
+                <a asp-action="Index" asp-controller="Home" class="navbar-brand p-0">
                     <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Meditours</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
@@ -68,20 +68,20 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <!-- <a href="index.html" class="nav-item nav-link active">Inicio</a> -->
-                        <a asp-action="Index" asp-controller="Destinos" class="nav-item nav-link">Tours & Actividades</a>
-                        <a asp-action="Paquetes" asp-controller="Destinos" class="nav-item nav-link">Paquetes</a>
+                        <a asp-action="Destinos" asp-controller="Tours" class="nav-item nav-link">Tours & Actividades</a>
+                        <a asp-action="Index" asp-controller="Tours" class="nav-item nav-link">Paquetes</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Destinos</a>
                             <div class="dropdown-menu m-0">
-                                <a href="destination.html" class="dropdown-item">Tulum</a>
-                                <a asp-action="Destino" asp-controller="Destinos" asp-route-id= class="dropdown-item">Chichen Itza</a>
-                                <a href="team.html" class="dropdown-item">Xcaret</a>
-                                <a asp-action="Destino" asp-controller="Destinos" asp-route-id=@ViewBag.Cozumel.PkDestino class="dropdown-item">Cozumel</a>
+                                <a asp-action="Destino" asp-controller="Tours" asp-route-id=@ViewBag.Tulum.PkDestino class="dropdown-item">Tulum</a>
+                                <a asp-action="Destino" asp-controller="Tours" asp-route-id=@ViewBag.Chichen.PkDestino class="dropdown-item">Chichen Itza</a>
+                                <a asp-action="Destino" asp-controller="Tours" asp-route-id=@ViewBag.Xcaret.PkDestino class="dropdown-item">Xcaret</a>
+                                <a asp-action="Destino" asp-controller="Tours" asp-route-id=@ViewBag.Cozumel.PkDestino class="dropdown-item">Cozumel</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contacto</a>
                     </div>
-						  <a href="" class="btn btn-primary rounded-pill py-2 px-4" style="margin: 4px;"><span class="glyphicon glyphicon-shopping-cart"></span>Mi carrito</a>
+						  <a asp-action="Index" asp-controller="Carrito" class="btn btn-primary rounded-pill py-2 px-4" style="margin: 4px;"><span class="glyphicon glyphicon-shopping-cart"></span>Mi carrito</a>
 						  <br>
                     <a asp-action="Index" asp-controller="Login" class="btn btn-primary rounded-pill py-2 px-4">Iniciar sesion</a>
                 </div>
@@ -208,21 +208,21 @@
                 <div class="col-lg-7 col-md-6">
                     <div class="row g-3">
                         <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                            <a class="position-relative d-block overflow-hidden" href="">
+                            <a class="position-relative d-block overflow-hidden" asp-action="Destino" asp-controller="Tours" asp-route-id=@ViewBag.Holbox.PkDestino>
                                 <img class="img-fluid" src="@ViewBag.Holbox.Urlimg" alt="">
                                 <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">30% OFF</div>
                                 <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">@ViewBag.Holbox.Nombre</div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                            <a class="position-relative d-block overflow-hidden" href="">
+                            <a class="position-relative d-block overflow-hidden" asp-action="Destino" asp-controller="Tours" asp-route-id=@ViewBag.Cozumel.PkDestino>
                                 <img class="img-fluid" src="@ViewBag.Cozumel.Urlimg" alt="">
                                 <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">25% OFF</div>
                                 <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">@ViewBag.Cozumel.Nombre</div>
                             </a>
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                            <a class="position-relative d-block overflow-hidden" href="">
+                            <a class="position-relative d-block overflow-hidden" asp-action="Destino" asp-controller="Tours" asp-route-id=@ViewBag.Coloradas.PkDestino>
                                 <img class="img-fluid" src="@ViewBag.Coloradas.Urlimg" alt="">
                                 <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">35% OFF</div>
                                 <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">@ViewBag.Coloradas.Nombre</div>
@@ -231,7 +231,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                    <a class="position-relative d-block h-100 overflow-hidden" href="">
+                    <a class="position-relative d-block h-100 overflow-hidden" asp-action="Destino" asp-controller="Tours" asp-route-id=@ViewBag.Isla.PkDestino>
                         <img class="img-fluid position-absolute w-100 h-100" src="@ViewBag.Isla.Urlimg" alt="" style="object-fit: cover;">
                         <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">20% OFF</div>
                         <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">@ViewBag.Isla.Nombre</div>
@@ -273,8 +273,8 @@
                             </div>
                             <p>@ViewBag.PYucatan.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
-										<a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
-										<a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+										<a asp-action="Paquete" asp-controller="Tours" asp-route-id=@ViewBag.PYucatan.PkPaquete class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+										<a asp-action="ItinerariosPaquetes" asp-controller="Carrito" asp-route-id=@ViewBag.PYucatan.PkPaquete class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -300,8 +300,8 @@
                             </div>
                             <p>@ViewBag.PChichen.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
-										<a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
-										<a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+										<a asp-action="Paquete" asp-controller="Tours" asp-route-id=@ViewBag.PChichen.PkPaquete class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+										<a asp-action="ItinerariosPaquetes" asp-controller="Carrito" asp-route-id=@ViewBag.PChichen.PkPaquete class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -327,8 +327,8 @@
                             </div>
                             <p>@ViewBag.PXcaret.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
-                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
-                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                                <a asp-action="Paquete" asp-controller="Tours" asp-route-id=@ViewBag.PXcaret.PkPaquete class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+                                <a asp-action="ItinerariosPaquetes" asp-controller="Carrito" asp-route-id=@ViewBag.PXcaret.PkPaquete class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -354,8 +354,8 @@
                             </div>
                             <p>Lanzate a Isla Mujeres y pasa dos dias enteros nadando con delfines y visitando el parque Garrafon</p>
                             <div class="d-flex justify-content-center mb-2">
-                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
-                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                                <a asp-action="Paquete" asp-controller="Tours" asp-route-id=@ViewBag.PIsla.PkPaquete class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+                                <a asp-action="ItinerariosPaquetes" asp-controller="Carrito" asp-route-id=@ViewBag.PIsla.PkPaquete class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -380,8 +380,8 @@
                             </div>
                             <p>@ViewBag.PPuerto.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
-                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
-                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                                <a asp-action="Paquete" asp-controller="Tours" asp-route-id=@ViewBag.PPuerto.PkPaquete class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+                                <a asp-action="ItinerariosPaquetes" asp-controller="Carrito" asp-route-id=@ViewBag.PPuerto.PkPaquete class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -406,8 +406,8 @@
                             </div>
                             <p>@ViewBag.PCozumel.Descripcion</p>
                             <div class="d-flex justify-content-center mb-2">
-                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
-                                <a href="#" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
+                                <a asp-action="Paquete" asp-controller="Tours" asp-route-id=@ViewBag.PCozumel.PkPaquete class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver paquete</a>
+                                <a asp-action="ItinerariosPaquetes" asp-controller="Carrito" asp-route-id=@ViewBag.PCozumel.PkPaquete class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -535,7 +535,7 @@
     <!-- Process Start -->
 
 
-    <!-- Team Start -->
+@*    <!-- Team Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -626,7 +626,9 @@
             </div>
         </div>
     </div>
-    <!-- Team End -->
+    <!-- Team End -->*@
+
+        <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
       
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -645,10 +647,10 @@
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>998 129 0895</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>Meditours@gmail.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZXMifQ%3D%3D%22%7D"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://es-la.facebook.com/TransportescancunMeditours1/"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/accounts/login/"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">

@@ -16,9 +16,5 @@ namespace Meditours.Models
         public int FkItinerario { get; set; }
         public Itinerarios Itinerarios { get; set; }
 
-        [ForeignKey("Destinos")]
-        public int FkDestino { get; set; }
-        public Destinos Destinos { get; set; }
-
     }
 }

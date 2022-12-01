@@ -1,8 +1,14 @@
-﻿@model IEnumerable<Meditours.Models.Destinos>
+﻿@model IEnumerable<Meditours.Models.Itinerarios>
 @{
     ViewData["Title"] = "Destinos";
-     Layout = "_DashboardLayout";
+     Layout = "_Layout";
 }
+
+<div class="row">
+    <div class="offset-9 col-3 mb-3">
+        <a asp-action="Crear" asp-controller="Login" class="btn btn-success" d-block mx-auto btn-lg> <i class="fa-solid fa-user"></i> Nuevo Usuario</a>
+    </div>
+</div>
 
 <div  class="container-fluid">
     <div class="offset-12"> 
@@ -14,35 +20,45 @@
 
             <div class="card-body">
                 <div class="table-responsive"> 
-                    <form  asp-controller="Carrito" asp-action="Agregar" method="post">
-                    <table class="table table-bordered align-middle" id="tblUsuarios" width="100%" cellspacing="0">
-                        <thead>               
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table table-bordered align-middle" id="tblUsuarios" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Descripcion</th>
-                                <th>Precio)/th>
-                                <th>img)/th>
+                                <th>@Html.DisplayNameFor(x => x.Dia)</th>
+                                <th>@Html.DisplayNameFor(x => x.HraSalida)</th>
+                                <th>@Html.DisplayNameFor(x => x.Capacidad)</th>
+                                <th>@Html.DisplayNameFor(x => x.Camionetas.Modelo)</th>
+                                <th>@Html.DisplayNameFor(x => x.Paquetes.Nombre)</th>
                                 <th> Acciones </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                    <td  asp-for="Nombre" >@ViewBag.Destino.Nombre</td>
-                                    <td asp-for="Descripcion" >@ViewBag.Destino.Descripcion</td>
-                                    <td >@ViewBag.Destino.Precio</td>
-                                    <td><img src="@ViewBag.Destino.Urlimg" width="50"/></td>
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(x => item.Dia)</td>
+                                    <td>@Html.DisplayFor(x => item.HraSalida)</td>
+                                    <td>@Html.DisplayFor(x => item.Capacidad)</td>
+                                    <td>@Html.DisplayFor(x => item.Camionetas.Modelo)</td>
+                                    <td>@Html.DisplayFor(x => item.Paquetes.Nombre)</td>
                                     <td>
-                                       <button type="submit" class="btn btn-secondary d-block mx-auto"> Comprar</button>
+                                        <a class="btn btn-warning" asp-action="Agregar" asp-route-id=@item.PkItinerario><i class="fa-regular fa-pen-to-square"></i>Comprar</a>
+                                    </td>
                                 </tr>
+                            }
                         </tbody>
                         </table>
-                        </form>
+                    }
+                    else
+                    {
+                        <p>No hay registros</p>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 @section Scripts{
     <script>

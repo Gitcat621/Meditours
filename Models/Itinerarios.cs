@@ -16,5 +16,13 @@ namespace Meditours.Models
         [ForeignKey("Camionetas")]
         public int FkCamioneta { get; set; }
         public Camionetas Camionetas { get; set; }
+
+        [ForeignKey("Destinos")]
+        public int FkDestino { get; set; }
+        public Destinos Destinos { get; set; }
+
+        [ForeignKey("Paquetes")]
+        public int FkPaquete { get; set; }
+        public Paquetes Paquetes { get; set; }
     }
 }
