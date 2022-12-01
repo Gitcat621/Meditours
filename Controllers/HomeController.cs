@@ -21,7 +21,7 @@ namespace Meditours.Controllers
             _logger = logger;
             _context = context;
         }
-
+        //Hola
         public async Task<IActionResult> Index()
         {
             ViewData["Holbox"] = await _context.Destinos.Where(x => x.PkDestino == 1).FirstOrDefaultAsync();
@@ -53,6 +53,11 @@ namespace Meditours.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
+        public IActionResult Contacto()
+        {
+            return View();
+        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
