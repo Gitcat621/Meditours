@@ -1,18 +1,18 @@
-﻿@model IEnumerable<Meditours.Models.Destinos>
+﻿@model IEnumerable<Meditours.Models.Camionetas>
 @{
     ViewData["Title"] = "Destinos";
      Layout = "_DashboardLayout";
 }
 <div class="row">
     <div class="offset-9 col-3 mb-3">
-        <a asp-action="Crear" asp-controller="Destinos" class="btn btn-success" d-block mx-auto btn-lg> <i class="fa-solid fa-user"></i> Nuevo Destino</a>
+        <a asp-action="Crear" asp-controller="Camionetas" class="btn btn-success" d-block mx-auto btn-lg> <i class="fa-solid fa-user"></i> Nueva Camioneta</a>
     </div>
 </div>
 <div  class="container-fluid">
     <div class="offset-12"> 
         <div class="card border">
             <div class="card-header bg-dark">
-                <h1 class="text-white"><strong>Lista de Destinos</strong></h1>
+                <h1 class="text-white"><strong>Lista de Camionetas</strong></h1>
 
             </div>
 
@@ -23,10 +23,10 @@
                         <table class="table table-bordered align-middle" id="tblUsuarios" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>@Html.DisplayNameFor(x => x.Nombre)</th>
-                                <th>@Html.DisplayNameFor(x => x.Descripcion)</th>
-                                <th>@Html.DisplayNameFor(x => x.Precio)</th>
+                                <th>@Html.DisplayNameFor(x => x.Modelo)</th>
+                                <th>@Html.DisplayNameFor(x => x.Capacidad)</th>
                                 <th>@Html.DisplayNameFor(x => x.Urlimg)</th>
+                                <th> Imagen </th>
                                 <th> Acciones </th>
                             </tr>
                         </thead>
@@ -34,13 +34,13 @@
                             @foreach(var item in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(x => item.Nombre)</td>
-                                    <td>@Html.DisplayFor(x => item.Descripcion)</td>
-                                    <td>@Html.DisplayFor(x => item.Precio)</td>
+                                    <td>@Html.DisplayFor(x => item.Modelo)</td>
+                                    <td>@Html.DisplayFor(x => item.Capacidad)</td>
+                                    <td>@Html.DisplayFor(x => item.Urlimg)</td>
                                     <td><img src="@Html.DisplayFor(x => item.Urlimg)" width="50"/></td>
                                     <td>
-                                        <a class="btn btn-warning" asp-action="Editar" asp-route-id=@item.PkDestino><i class="fa-regular fa-pen-to-square"></i>Editar</a>
-                                        <a class="btn btn-danger" asp-action="Eliminar" asp-route-id=@item.PkDestino><i class="fa-solid fa-trash"></i>Eliminar</a>
+                                        <a class="btn btn-warning" asp-action="Editar" asp-route-id=@item.PkCamioneta><i class="fa-regular fa-pen-to-square"></i>Editar</a>
+                                        <a class="btn btn-danger" asp-action="Eliminar" asp-route-id=@item.PkCamioneta><i class="fa-solid fa-trash"></i>Eliminar</a>
                                     </td>
                                 </tr>
                             }

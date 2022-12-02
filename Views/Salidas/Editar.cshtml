@@ -1,0 +1,59 @@
+﻿@model Meditours.Models.Itinerarios
+@{
+    ViewData["Title"] = "Editar";
+     Layout = "_DashboardLayout";
+}
+
+<div class="container-fluid">
+	<div class="offset-12">
+		<div class="card borrder">
+			<div class="card-header bg-dark" >
+				<h1 class="text-white">@ViewData["Title"]</h1>
+			</div>
+
+			<div class="card-body">
+				<form asp-action="EditarUsuario" method="post">
+
+					<input type="hidden" asp-for="PkItinerario"/>
+					<div class="form-group">
+						<label asp-for="Dia" class="Control-label"></label>
+						<input asp-for="Dia" class="form-control" placeholder="Ingresa nombre" required/>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="HraSalida" class="Control-label"></label>
+						<input asp-for="HraSalida" class="form-control" placeholder="Ingresa user" required/>
+					</div>
+
+					<div class="form-group">
+						<label asp-for="Capacidad" class="Control-label"></label>
+						<input asp-for="Capacidad" class="form-control" placeholder="Ingresa password" required/>
+					</div>
+
+					<div class="form-group mt-3">
+						<label asp-for="FkCamioneta" class="Control-label"></label>
+						<select asp-for="FkCamioneta" asp-items="ViewBag.combo1" class="select2-placeholder-multiple form-control"> <option value="">--selecciona--</option></select>
+					</div>
+
+					<div class="form-group mt-3">
+						<label asp-for="FkDestino" class="Control-label"></label>
+						<select asp-for="FkDestino" asp-items="ViewBag.combo2" class="select2-placeholder-multiple form-control"> <option value="">--selecciona--</option></select>
+					</div>
+
+					<div class="form-group mt-3">
+						<label asp-for="FkPaquete" class="Control-label"></label>
+						<select asp-for="FkPaquete" asp-items="ViewBag.combo3" class="select2-placeholder-multiple form-control"> <option value="">--selecciona--</option></select>
+					</div>
+
+					<div class="form-group mt-3">
+						<button type="submit" class="btn btn-secondary d-block mx-auto"> guardar</button>
+
+					</div>
+				</form>
+					<a asp-controller="Home" asp-action="IndexAdmin" > Volver</a>
+
+			</div>
+
+		</div>
+	</div>
+</div>

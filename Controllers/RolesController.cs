@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Meditours.Controllers
 {
-    public class DestinosController : Controller
+    public class RolesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public DestinosController(ApplicationDbContext context)
+        public RolesController(ApplicationDbContext context)
         {
             _context = context;
         }
         public async Task<IActionResult> Index()
         {
-            var response = await _context.Destinos.ToListAsync();
+            var response = await _context.Roles.ToListAsync();
             return View(response);
         }
 
@@ -29,19 +29,16 @@ namespace Meditours.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CrearDestino(Destinos request)
+        public async Task<IActionResult> CrearRol(Roles request)
         {
             try
             {
                 if (request != null)
                 {
-                    Destinos destino = new Destinos();
-                    destino.Nombre = request.Nombre;
-                    destino.Descripcion = request.Descripcion;
-                    destino.Precio = request.Precio;
-                    destino.Urlimg = request.Urlimg;
+                    Roles rol = new Roles();
+                    rol.Nombre = request.Nombre;
 
-                    _context.Destinos.Add(destino);
+                    _context.Roles.Add(rol);
                     await _context.SaveChangesAsync();
 
                     return RedirectToAction(nameof(Index));
@@ -55,6 +52,7 @@ namespace Meditours.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Editar(int? id)
         {
             if (id == null)
@@ -63,22 +61,22 @@ namespace Meditours.Controllers
             }
             else
             {
-                var destino = _context.Destinos.Find(id);
-                if (destino == null)
+                var Rol = _context.Roles.Find(id);
+                if (Rol == null)
                 {
                     return NotFound();
                 }
                 else
-                return View(destino);
+                return View(Rol);
             }
         }
 
         [HttpGet]
         public IActionResult Eliminar(int? id)
         {
-            var destino = _context.Destinos.Find(id);
+            var Rol = _context.Roles.Find(id);
 
-            _context.Remove(destino);
+            _context.Remove(Rol);
 
             _context.SaveChanges();
 

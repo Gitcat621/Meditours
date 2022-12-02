@@ -1,6 +1,6 @@
-﻿@model Meditours.Models.Usuarios
+﻿@model Meditours.Models.Paquetes
 @{
-    ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Crear usuario";
      Layout = "_DashboardLayout";
 }
 
@@ -10,29 +10,26 @@
 			<div class="card-header bg-dark" >
 				<h1 class="text-white">@ViewData["Title"]</h1>
 			</div>
-
 			<div class="card-body">
-				<form asp-action="EditarUsuario" method="post">
-
-					<input type="hidden" asp-for="PkUsuario"/>
+				<form asp-action="CrearPaquete" method="post">
 					<div class="form-group">
 						<label asp-for="Nombre" class="Control-label"></label>
 						<input asp-for="Nombre" class="form-control" placeholder="Ingresa nombre" required/>
 					</div>
 
 					<div class="form-group">
-						<label asp-for="User" class="Control-label"></label>
-						<input asp-for="User" class="form-control" placeholder="Ingresa user" required/>
+						<label asp-for="Descripcion" class="Control-label"></label>
+						<input asp-for="Descripcion" class="form-control" placeholder="Ingresa user" required/>
 					</div>
 
 					<div class="form-group">
-						<label asp-for="password" class="Control-label"></label>
-						<input asp-for="password" class="form-control" placeholder="Ingresa password" required/>
+						<label asp-for="Precio" class="Control-label"></label>
+						<input asp-for="Precio" class="form-control" placeholder="Ingresa password" required/>
 					</div>
-
+					
 					<div class="form-group mt-3">
-						<label asp-for="FkRol" class="Control-label"></label>
-						<select asp-for="FkRol" asp-items="ViewBag.combo" class="select2-placeholder-multiple form-control"> <option value="">--selecciona--</option></select>
+						<label asp-for="Urlimg" class="Control-label"></label>
+						<input asp-for="Urlimg" class="form-control" placeholder="Ingresa password" required/>
 					</div>
 
 					<div class="form-group mt-3">

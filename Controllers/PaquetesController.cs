@@ -3,22 +3,21 @@ using Meditours.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Meditours.Controllers
 {
-    public class DestinosController : Controller
+    public class PaquetesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public DestinosController(ApplicationDbContext context)
+        public PaquetesController(ApplicationDbContext context)
         {
             _context = context;
         }
         public async Task<IActionResult> Index()
         {
-            var response = await _context.Destinos.ToListAsync();
+            var response = await _context.Paquetes.ToListAsync();
             return View(response);
         }
 
@@ -29,19 +28,19 @@ namespace Meditours.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CrearDestino(Destinos request)
+        public async Task<IActionResult> CrearPaquete(Paquetes request)
         {
             try
             {
                 if (request != null)
                 {
-                    Destinos destino = new Destinos();
+                    Paquetes destino = new Paquetes();
                     destino.Nombre = request.Nombre;
                     destino.Descripcion = request.Descripcion;
                     destino.Precio = request.Precio;
                     destino.Urlimg = request.Urlimg;
 
-                    _context.Destinos.Add(destino);
+                    _context.Paquetes.Add(destino);
                     await _context.SaveChangesAsync();
 
                     return RedirectToAction(nameof(Index));
@@ -63,13 +62,13 @@ namespace Meditours.Controllers
             }
             else
             {
-                var destino = _context.Destinos.Find(id);
-                if (destino == null)
+                var paq = _context.Paquetes.Find(id);
+                if (paq == null)
                 {
                     return NotFound();
                 }
                 else
-                return View(destino);
+                    return View(paq);
             }
         }
 
@@ -82,7 +81,7 @@ namespace Meditours.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Usuarios));
 
         }
     }

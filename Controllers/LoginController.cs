@@ -61,6 +61,10 @@ namespace Meditours.Controllers
             {
                 //var response = _context.usuarios.Where(x => x.User == user && x.Password == Password).ToList();
 
+                //EncryptMD5 encr = new EncryptMD5();
+
+                //var res = encr.Decrypt(usuario.Password);
+
                 var response = _context.Usuarios.Include(z => z.Roles).FirstOrDefault
                     (x => x.User == user && x.password == Password);
 
@@ -68,9 +72,11 @@ namespace Meditours.Controllers
                 {
                     if (response.Roles.Nombre == "Admin")
                     {
-                        //se va a logear
+                        //se va a logearz
+                        ViewBag.Admin = response;
                         return Json(new { success = true, admin = true });
                     }
+                    ViewBag.User = response;
                     return Json(new { success = true, admin = false });
                 }
                 else

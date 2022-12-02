@@ -1,10 +1,11 @@
 ﻿@model Meditours.Models.Itinerarios
 @{
-    ViewData["Title"] = "Editar";
-     Layout = "_DashboardLayout";
+    ViewData["Title"] = "Agregar al carrito";
+     Layout = "_Layout";
 }
 
-<div class="container-fluid">
+<div class="Container">
+    <div class="container-fluid">
 	<div class="offset-12">
 		<div class="card borrder">
 			<div class="card-header bg-dark" >
@@ -13,22 +14,23 @@
 
 			<div class="card-body">
 				<form asp-action="AgregarCarrito" method="post">
-
-					<input type="hidden" asp-for="PkItinerario"/>
 					<div class="form-group">
-						<label asp-for="PkItinerario" class="Control-label"></label>
-						<input asp-for="PkItinerario" class="form-control" placeholder="Ingresa nombre" value="@ViewBag.Itinerario.PkItinerario" required/>
+						<input type="hidden" asp-for="PkItinerario" class="form-control" placeholder="Ingresa nombre" value="@ViewBag.Itinerario.PkItinerario" required/>
+					</div>
+					<div class="form-group">
+						<p>¿Seguro que quiere añadir este destino a su carrito?</p>
 					</div>
 
-					<div class="form-group mt-3">
-						<button type="submit" class="btn btn-secondary d-block mx-auto"> guardar</button>
+					<div class="container">
+						<button asp-controller="Carrito" asp-action="ItinerariosDestinos" class="btn btn-danger" asp-for="PkItinerario"> Volver</button>
+						<button type="submit" class="btn btn-secondary">Añadir</button>
 
 					</div>
 				</form>
-					<a asp-controller="Carrito" asp-action="ItinerariosDestinos" > Volver</a>
 
 			</div>
 
 		</div>
 	</div>
+</div>
 </div>

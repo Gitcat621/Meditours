@@ -62,7 +62,7 @@ namespace Meditours.Controllers
                     return NotFound();
                 }
                 else
-                    ViewBag.Destinos = paquete;
+                    ViewBag.Paquetes = paquete;
                 return View();
             }
         }

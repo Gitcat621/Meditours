@@ -1,6 +1,7 @@
 ﻿using Meditours.Context;
 using Meditours.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -8,40 +9,48 @@ using System.Threading.Tasks;
 
 namespace Meditours.Controllers
 {
-    public class DestinosController : Controller
+    public class ReservasController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public DestinosController(ApplicationDbContext context)
+        public ReservasController(ApplicationDbContext context)
         {
             _context = context;
         }
         public async Task<IActionResult> Index()
         {
-            var response = await _context.Destinos.ToListAsync();
+            var response = await _context.Reservas.ToListAsync();
             return View(response);
         }
 
         [HttpGet]
         public IActionResult Crear()
         {
+            ViewBag.combo1 = _context.Usuarios.Select(x => new SelectListItem
+            {
+                Text = x.User,
+                Value = x.PkUsuario.ToString()
+            });
+            ViewBag.combo2 = _context.Itinerarios.Select(x => new SelectListItem
+            {
+                Text = x.Dia,
+                Value = x.PkItinerario.ToString()
+            });
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CrearDestino(Destinos request)
+        public async Task<IActionResult> CrearReserva(Reservas request)
         {
             try
             {
                 if (request != null)
                 {
-                    Destinos destino = new Destinos();
-                    destino.Nombre = request.Nombre;
-                    destino.Descripcion = request.Descripcion;
-                    destino.Precio = request.Precio;
-                    destino.Urlimg = request.Urlimg;
+                    Reservas destino = new Reservas();
+                    destino.FkUsuario = request.FkItinerario;
+                    destino.FkItinerario = request.FkItinerario;
 
-                    _context.Destinos.Add(destino);
+                    _context.Reservas.Add(destino);
                     await _context.SaveChangesAsync();
 
                     return RedirectToAction(nameof(Index));
@@ -63,12 +72,22 @@ namespace Meditours.Controllers
             }
             else
             {
-                var destino = _context.Destinos.Find(id);
+                var destino = _context.Reservas.Find(id);
                 if (destino == null)
                 {
                     return NotFound();
                 }
                 else
+                ViewBag.combo1 = _context.Usuarios.Select(x => new SelectListItem
+                {
+                    Text = x.User,
+                    Value = x.PkUsuario.ToString()
+                });
+                ViewBag.combo2 = _context.Itinerarios.Select(x => new SelectListItem
+                {
+                    Text = x.Dia,
+                    Value = x.PkItinerario.ToString()
+                });
                 return View(destino);
             }
         }
@@ -76,7 +95,7 @@ namespace Meditours.Controllers
         [HttpGet]
         public IActionResult Eliminar(int? id)
         {
-            var destino = _context.Destinos.Find(id);
+            var destino = _context.Reservas.Find(id);
 
             _context.Remove(destino);
 

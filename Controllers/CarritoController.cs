@@ -62,7 +62,7 @@ namespace Meditours.Controllers
                     return View(destino);
             }
         }
-        SqlConnection connection = new SqlConnection("Data Source = LAPTOP-1TJ137V4; initial catalog = proyecto24BM; Integrated Security = true;");
+        SqlConnection connection = new SqlConnection("Data Source = LAPTOP-1TJ137V4; initial catalog = meditours; Integrated Security = true;");
 
         [HttpGet]
         public IActionResult Agregar(int? id)
@@ -89,13 +89,14 @@ namespace Meditours.Controllers
         public async Task<IActionResult> AgregarCarrito(Itinerarios response, int Usuario)
         {
             try
-            {   Usuario = 1;
+            {
+                Usuario = 1;
                 if (response != null)
                 {
                     await connection.QueryAsync<Itinerarios>("spInsertReserva", new { Usuario, response.PkItinerario }, commandType: CommandType.StoredProcedure);
                     return RedirectToAction(nameof(Index));
                 }
-                return View();
+                return View(nameof(Index));
             }
             catch (Exception ex)
             {
