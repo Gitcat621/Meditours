@@ -33,12 +33,13 @@ namespace Meditours.Controllers
         {
             try
             {
+                EncryptMD5 encrypt = new EncryptMD5();
                 if (request != null)
                 {
                     Usuarios usuario = new Usuarios();
                     usuario.Nombre = request.Nombre;
                     usuario.User = request.User;
-                    usuario.password = request.password;
+                    usuario.password = encrypt.Encrypt(request.password);
                     usuario.FkRol = 3;
 
                     _context.Usuarios.Add(usuario);
@@ -59,14 +60,12 @@ namespace Meditours.Controllers
         {
             try
             {
-                //var response = _context.usuarios.Where(x => x.User == user && x.Password == Password).ToList();
-
-                //EncryptMD5 encr = new EncryptMD5();
-
-                //var res = encr.Decrypt(usuario.Password);
+                var usuario = _context.Usuarios.First(s => s.User == user);
+                EncryptMD5 encr = new EncryptMD5();
+                var Dpassword = encr.Descrypt(usuario.password);
 
                 var response = _context.Usuarios.Include(z => z.Roles).FirstOrDefault
-                    (x => x.User == user && x.password == Password);
+                    (x => x.User == user && Dpassword == Password);
 
                 if (response != null)
                 {
@@ -115,12 +114,13 @@ namespace Meditours.Controllers
         {
             try
             {
+                EncryptMD5 encrypt = new EncryptMD5();
                 if (request != null)
                 {
                     Usuarios usuario = new Usuarios();
                     usuario.Nombre = request.Nombre;
                     usuario.User = request.User;
-                    usuario.password = request.password;
+                    usuario.password = encrypt.Encrypt(request.password);
                     usuario.FkRol = request.FkRol;
 
                     _context.Usuarios.Add(usuario);

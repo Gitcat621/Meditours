@@ -1,9 +1,12 @@
-﻿using Meditours.Context;
+﻿using Dapper;
+using Meditours.Context;
 using Meditours.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,24 +41,18 @@ namespace Meditours.Controllers
             });
             return View();
         }
-
+        SqlConnection connection = new SqlConnection("Data Source = LAPTOP-1TJ137V4; initial catalog = meditours; Integrated Security = true;");
         [HttpPost]
-        public async Task<IActionResult> CrearReserva(Reservas request)
+        public async Task<IActionResult> CrearReserva(Usuarios Usuario,Itinerarios response)
         {
             try
             {
-                if (request != null)
+                if (response != null)
                 {
-                    Reservas destino = new Reservas();
-                    destino.FkUsuario = request.FkItinerario;
-                    destino.FkItinerario = request.FkItinerario;
-
-                    _context.Reservas.Add(destino);
-                    await _context.SaveChangesAsync();
-
+                    await connection.QueryAsync<Itinerarios>("spInsertReserva", new { Usuario.PkUsuario, response.PkItinerario }, commandType: CommandType.StoredProcedure);
                     return RedirectToAction(nameof(Index));
                 }
-                return View();
+                return View(nameof(Index));
             }
             catch (Exception ex)
             {
