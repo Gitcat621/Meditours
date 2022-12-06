@@ -42,7 +42,7 @@ namespace Meditours.Controllers
             return View();
         }
 
-        public async Task<IActionResult> IndexAdmin(int id)
+        public async Task<IActionResult> IndexAdmin()
         {
             ViewData["Holbox"] = await _context.Destinos.Where(x => x.PkDestino == 1).FirstOrDefaultAsync();
             ViewData["Isla"] = await _context.Destinos.Where(x => x.PkDestino == 2).FirstOrDefaultAsync();
@@ -59,8 +59,7 @@ namespace Meditours.Controllers
             ViewData["PIsla"] = await _context.Paquetes.Where(x => x.PkPaquete == 5).FirstOrDefaultAsync();
             ViewData["PCozumel"] = await _context.Paquetes.Where(x => x.PkPaquete == 6).FirstOrDefaultAsync();
 
-            var response = await _context.Destinos.ToListAsync();
-            return View(response);
+            return View();
         }
 
         public async Task<IActionResult> IndexUser(int id)
@@ -80,8 +79,7 @@ namespace Meditours.Controllers
             ViewData["PIsla"] = await _context.Paquetes.Where(x => x.PkPaquete == 5).FirstOrDefaultAsync();
             ViewData["PCozumel"] = await _context.Paquetes.Where(x => x.PkPaquete == 6).FirstOrDefaultAsync();
 
-            var response = await _context.Destinos.ToListAsync();
-            return View(response);
+            return View();
         }
         public IActionResult Privacy()
         {

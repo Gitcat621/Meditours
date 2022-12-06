@@ -72,10 +72,9 @@ namespace Meditours.Controllers
                     if (response.Roles.Nombre == "Admin")
                     {
                         //se va a logearz
-                        ViewBag.Admin = response;
-                        return Json(new { success = true, admin = true });
+                        var id = response.PkUsuario;
+                        return Json(new { success = true, admin = true, id = id });
                     }
-                    ViewBag.User = response;
                     return Json(new { success = true, admin = false });
                 }
                 else

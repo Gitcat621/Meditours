@@ -75,13 +75,13 @@ namespace Meditours.Controllers
         [HttpGet]
         public IActionResult Eliminar(int? id)
         {
-            var destino = _context.Destinos.Find(id);
+            var destino = _context.Paquetes.Find(id);
 
             _context.Remove(destino);
 
             _context.SaveChanges();
 
-            return RedirectToAction(nameof(Usuarios));
+            return RedirectToAction(nameof(Index));
 
         }
     }
